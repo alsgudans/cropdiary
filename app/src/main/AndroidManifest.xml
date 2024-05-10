@@ -13,10 +13,20 @@
         android:theme="@style/Theme.Mycrodiary"
         tools:targetApi="31">
         <activity
-            android:name=".SignuppageActivity"
+            android:name=".menu.MypageActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginpageActivity"
+            android:name=".menu.Mypage"
+            android:exported="false"
+            android:label="@string/title_activity_mypage" />
+        <activity
+            android:name=".main.MainpageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account.SignuppageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".account.LoginpageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
