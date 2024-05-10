@@ -17,7 +17,6 @@ class LoginpageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         auth = Firebase.auth
 
@@ -30,7 +29,7 @@ class LoginpageActivity : AppCompatActivity() {
             startActivity(move_signinpage)
         }
 
-        binding.loginBtn.setOnClickListener(){
+        binding.loginBtn.setOnClickListener{
             var email = binding.inputEmail.text.toString()
             var pw = binding.inputPw.text.toString()
 
