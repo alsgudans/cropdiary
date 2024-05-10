@@ -17,7 +17,6 @@ class LoginpageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         auth = Firebase.auth
 
@@ -30,9 +29,9 @@ class LoginpageActivity : AppCompatActivity() {
             startActivity(move_signinpage)
         }
 
-        binding.loginBtn.setOnClickListener(){
-            var email = binding.inputEmail.text.toString()
-            var pw = binding.inputPw.text.toString()
+        binding.loginBtn.setOnClickListener{
+            val email = binding.inputEmail.text.toString()
+            val pw = binding.inputPw.text.toString()
 
             if (email.isNullOrBlank() || pw.isNullOrBlank()) {
                 Toast.makeText(this, "Email 혹은 Password를 입력해주세요.",Toast.LENGTH_LONG).show()
