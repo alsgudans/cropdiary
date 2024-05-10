@@ -84,7 +84,7 @@
         android:layout_marginTop="5dp"
         android:text="로그인 정보 저장"/>
 
-    <ImageButton
+    <ImageView
         android:layout_width="300dp"
         android:layout_height="1dp"
         android:layout_marginTop="5dp"
