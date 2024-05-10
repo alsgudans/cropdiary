@@ -19,41 +19,70 @@
         android:textColor="@color/black"/>
         >
 
-        <EditText
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/bulu_green"
+        android:layout_marginTop="25dp">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/new_nickname"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="Nick name"/>
 
+    </com.google.android.material.textfield.TextInputLayout>
 
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/bulu_green"
+        android:layout_marginTop="10dp">
 
-
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/new_email"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="email"/>
 
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/bulu_green"
+        android:layout_marginTop="10dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/new_pw"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/bulu_green"
+        android:layout_marginTop="10dp">
 
-
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/check_new_pw"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="check Password"
-            android:inputType="textPassword"/>
-
+            android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <android.widget.Button
         android:id="@+id/make_account_btn"

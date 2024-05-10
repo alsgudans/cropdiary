@@ -98,6 +98,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/button_color2"
         android:text="serach id/pw"
+        android:textColor="@color/black"
         />
 
 
