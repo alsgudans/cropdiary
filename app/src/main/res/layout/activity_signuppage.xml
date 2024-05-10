@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".SigninpageActivity">
+    tools:context=".SignuppageActivity">
 
     <TextView
         android:layout_width="wrap_content"

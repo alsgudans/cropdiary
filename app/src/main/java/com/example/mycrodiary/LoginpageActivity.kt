@@ -6,8 +6,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.mycrodiary.databinding.ActivityLoginpageBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +24,7 @@ class LoginpageActivity : AppCompatActivity() {
         val binding = ActivityLoginpageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val move_signinpage = Intent(this,SigninpageActivity::class.java)
+        val move_signinpage = Intent(this,SignuppageActivity::class.java)
 
         binding.signBtn.setOnClickListener(){
             startActivity(move_signinpage)
