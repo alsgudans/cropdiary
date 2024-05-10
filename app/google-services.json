@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "890292400855",
+    "project_id": "project-my-crop",
+    "storage_bucket": "project-my-crop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890292400855:android:682c477ded42290a003692",
+        "android_client_info": {
+          "package_name": "com.example.mycrodiary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClc7E_YhJZWN67cmLa2ZCnPFG3Uw1Wp1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
