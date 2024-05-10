@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".LoginpageActivity">
+    tools:context=".account.LoginpageActivity">
 
 
     <TextView
@@ -48,7 +48,8 @@
             android:id="@+id/input_pw"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="password"/>
+            android:hint="password"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,6 +98,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/button_color2"
         android:text="serach id/pw"
+        android:textColor="@color/black"
         />
 
 
