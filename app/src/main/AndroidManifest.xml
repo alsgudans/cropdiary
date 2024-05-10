@@ -16,6 +16,9 @@
             android:name=".menu.MypageActivity"
             android:exported="false" />
         <activity
+            android:name=".menu.MypageActivity"
+            android:exported="false" />
+        <activity
             android:name=".menu.Mypage"
             android:exported="false"
             android:label="@string/title_activity_mypage" />
