@@ -14,6 +14,5 @@ class SignuppageActivity : AppCompatActivity() {
 
         val binding = ActivitySignuppageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 }
