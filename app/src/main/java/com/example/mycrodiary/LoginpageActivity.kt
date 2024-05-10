@@ -37,17 +37,16 @@ class LoginpageActivity : AppCompatActivity() {
             var pw = binding.inputPw.text.toString()
 
             if (email.isNullOrBlank() || pw.isNullOrBlank()) {
-                var toast = Toast.makeText(this, "Email 혹은 Password를 입력해주세요.",Toast.LENGTH_SHORT).show()
-                Toast.makeText(this, "Email 혹은 Password를 확인하세요.", Toast.LENGTH_SHORT,).show()
+                Toast.makeText(this, "Email 혹은 Password를 입력해주세요.",Toast.LENGTH_LONG).show()
             }
             else{
                 auth.signInWithEmailAndPassword(email, pw).addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Log.d("TAG", "signInWithEmail:success")
-                        Toast.makeText(this,"로그인 성공",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"로그인 성공",Toast.LENGTH_LONG).show()
                     } else {
                         Log.d("TAG", "signInWithEmail:failure", task.exception)
-                        Toast.makeText(this, "Email 혹은 Password를 확인하세요.", Toast.LENGTH_SHORT,).show()
+                        Toast.makeText(this, "Email 혹은 Password를 확인하세요.", Toast.LENGTH_LONG,).show()
                     }
                 }
             }
