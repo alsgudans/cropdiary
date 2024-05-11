@@ -13,11 +13,23 @@
         android:theme="@style/Theme.Mycrodiary"
         tools:targetApi="31">
         <activity
+            android:name=".pages.CropdiaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pages.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pages.MytreeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pages.MypageActivity"
+            android:exported="false" />
+        <activity
             android:name=".account.SignuppageActivity"
             android:exported="false" />
         <activity
             android:name=".main.MainpageActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".account.LoginpageActivity"
             android:exported="true">
