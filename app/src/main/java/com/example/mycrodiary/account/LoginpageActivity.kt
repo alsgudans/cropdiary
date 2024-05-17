@@ -17,6 +17,9 @@ class LoginpageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+
 
         auth = Firebase.auth
 
