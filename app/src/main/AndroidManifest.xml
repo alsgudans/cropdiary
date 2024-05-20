@@ -19,25 +19,25 @@
             android:name=".cropdiarypages.DiarypageActivity"
             android:exported="false" />
         <activity
-            android:name=".cropdiarypages.CropdiaryActivity"
+            android:name=".cropdiarypages.CropdiarypageActivity"
             android:exported="false" />
         <activity
-            android:name=".settingpage.SettingActivity"
+            android:name=".settingpage.SettingpageActivity"
             android:exported="false" />
         <activity
-            android:name=".mytreepage.MytreeActivity"
+            android:name=".mytreepage.MytreepageActivity"
             android:exported="false" />
         <activity
             android:name=".mypage.MypageActivity"
             android:exported="false" />
         <activity
-            android:name=".account.SignuppageActivity"
+            android:name=".accountpage.SignuppageActivity"
             android:exported="false" />
         <activity
-            android:name=".main.MainpageActivity"
+            android:name=".mainpage.MainpageActivity"
             android:exported="false" />
         <activity
-            android:name=".account.LoginpageActivity"
+            android:name=".accountpage.LoginpageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

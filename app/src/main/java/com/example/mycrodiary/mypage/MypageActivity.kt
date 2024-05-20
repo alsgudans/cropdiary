@@ -16,12 +16,7 @@ class MypageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_mypage)
         val binding = ActivityMypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val user = Firebase.auth.currentUser
-
-
     }
 }
