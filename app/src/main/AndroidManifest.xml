@@ -13,16 +13,22 @@
         android:theme="@style/Theme.Mycrodiary"
         tools:targetApi="31">
         <activity
-            android:name=".pages.CropdiaryActivity"
+            android:name=".editcroplist.AddcropdiaryActivity"
             android:exported="false" />
         <activity
-            android:name=".pages.SettingActivity"
+            android:name=".cropdiarypages.DiarypageActivity"
             android:exported="false" />
         <activity
-            android:name=".pages.MytreeActivity"
+            android:name=".cropdiarypages.CropdiaryActivity"
             android:exported="false" />
         <activity
-            android:name=".pages.MypageActivity"
+            android:name=".settingpage.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mytreepage.MytreeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".mypage.MypageActivity"
             android:exported="false" />
         <activity
             android:name=".account.SignuppageActivity"
