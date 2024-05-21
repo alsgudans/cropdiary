@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".main.MainpageActivity">
+    tools:context=".mainpage.MainpageActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -31,43 +31,91 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="center">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical"
             android:padding="5dp">
+
+            <android.widget.ImageButton
+                android:id="@+id/crop_diary"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/button_color1"
+                android:src="@drawable/nutrition_outline"
+                />nutri
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="나의 작물"
+                android:textSize="20dp"/>
 
             <android.widget.ImageButton
                 android:id="@+id/my_page"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginBottom="5dp"
+                android:background="@color/button_color2"
+                android:src="@drawable/person_outline"/>
 
-            <android.widget.ImageButton
-                android:id="@+id/crop_diary"
-                android:layout_width="120dp"
-                android:layout_height="120dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="마이페이지"
+                android:textSize="20dp"/>
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:padding="5dp">
 
             <android.widget.ImageButton
-
+                android:id="@+id/my_tree"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginBottom="5dp"
+                android:background="@color/button_color2"
+                android:src="@drawable/leaf_outline"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="나의 나무"
+                android:textSize="20dp"/>
+
 
             <android.widget.ImageButton
+                android:id="@+id/setting"
                 android:layout_width="120dp"
-                android:layout_height="120dp"/>
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/button_color1"
+                android:src="@drawable/settings_outline"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="설정"
+                android:textSize="20dp"/>
+
 
         </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.example.mycrodiary.account
+package com.example.mycrodiary.accountpage
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.databinding.ActivityLoginpageBinding
-import com.example.mycrodiary.main.MainpageActivity
+import com.example.mycrodiary.mainpage.MainpageActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -17,6 +17,9 @@ class LoginpageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+
 
         auth = Firebase.auth
 
