@@ -7,5 +7,6 @@ class FirebaseRef {
     companion object {
         val database = Firebase.database("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
         val userInfo = database.getReference("userInfo")
+        val cropInfo = database.getReference("cropInfo")
     }
 }

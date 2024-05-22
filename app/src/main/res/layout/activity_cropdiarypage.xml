@@ -28,11 +28,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp">
+
 
         <ListView
             android:id="@+id/crop_diary_listview"
@@ -42,14 +38,14 @@
 
         <android.widget.ImageButton
 
-            android:id="@+id/add_diary"
+            android:id="@+id/add_diary_btn"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@color/button_color1"
             android:src="@drawable/plusicon1"
             />
 
-    </LinearLayout>
+
 
 
 </LinearLayout>

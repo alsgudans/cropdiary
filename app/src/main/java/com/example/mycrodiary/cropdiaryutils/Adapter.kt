@@ -5,29 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
+import com.example.mycrodiary.R
 import com.example.mycrodiary.cropdiaryutils.Cropinfo
 import com.example.mycrodiary.databinding.AdddiaryBinding
 
 class Adapter(val context: Context, val cropList: ArrayList<Cropinfo>): BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val binding = AdddiaryBinding.inflate(LayoutInflater.from(context))
+        // XML 레이아웃 파일을 인플레이션하여 뷰 생성
+        val view = LayoutInflater.from(context).inflate(R.layout.adddiary, parent, false)
 
-        val profile = binding.cropProfile
-        val name = binding.cropName
-        val nickname = binding.cropNickname
-        val date = binding.addDay
+        // 뷰에서 각각의 텍스트뷰를 찾음
+        val nameTextView = view.findViewById<TextView>(R.id.crop_name)
+        val nicknameTextView = view.findViewById<TextView>(R.id.crop_nickname)
+        val dateTextView = view.findViewById<TextView>(R.id.add_date)
 
-        val croplist = cropList[position]
+        // 해당 위치의 데이터를 가져와서 각각의 텍스트뷰에 설정
+        val cropInfo = cropList[position]
+        nameTextView.text = cropInfo.crop
+        nicknameTextView.text = cropInfo.nickname
+        dateTextView.text = cropInfo.date
 
-        val resourceId = context.resources.getIdentifier(croplist.profile, "drawable", context.packageName)
-        profile.setImageResource(resourceId)
-
-        name.text = croplist.name
-        nickname.text = croplist.nickname
-        date.text = croplist.date
-
-        return binding.root
+        return view
     }
 
     override fun getCount(): Int {
@@ -39,6 +39,6 @@ class Adapter(val context: Context, val cropList: ArrayList<Cropinfo>): BaseAdap
     }
 
     override fun getItemId(position: Int): Long {
-        return 0
+        return position.toLong()
     }
 }

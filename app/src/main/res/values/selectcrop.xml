@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="crop_array">
+        <item>토마토</item>
+        <item>상추</item>
+    </string-array>
+</resources>

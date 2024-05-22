@@ -5,12 +5,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.accountutil.FirebaseRef
 import com.example.mycrodiary.accountutil.UserInfo
+import com.example.mycrodiary.databinding.ActivityCropdiarypageBinding
 import com.example.mycrodiary.databinding.ActivitySignuppageBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class SignuppageActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivitySignuppageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +39,6 @@ class SignuppageActivity : AppCompatActivity() {
                 }
 
         }
-
     }
 }
 
