@@ -23,7 +23,7 @@ class Adapter(val context: Context, val cropList: ArrayList<Cropinfo>): BaseAdap
 
         // 해당 위치의 데이터를 가져와서 각각의 텍스트뷰에 설정
         val cropInfo = cropList[position]
-        nameTextView.text = cropInfo.crop
+        nameTextView.text = cropInfo.name
         nicknameTextView.text = cropInfo.nickname
         dateTextView.text = cropInfo.date
 

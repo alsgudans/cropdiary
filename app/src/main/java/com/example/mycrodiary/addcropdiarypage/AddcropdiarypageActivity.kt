@@ -8,8 +8,10 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.R
+import com.example.mycrodiary.accountutil.FirebaseRef
 import com.example.mycrodiary.cropdiaryutils.Cropinfo
 import com.example.mycrodiary.databinding.ActivityAddcropdiarypageBinding
+import com.google.firebase.database.FirebaseDatabase
 
 
 class AddcropdiarypageActivity : AppCompatActivity() {
@@ -18,22 +20,23 @@ class AddcropdiarypageActivity : AppCompatActivity() {
         val binding = ActivityAddcropdiarypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val selectcropData = resources.getStringArray(R.array.crop_array)
-        val spinnerAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,selectcropData)
-        binding.selectCrop.adapter = spinnerAdapter
+        val databaseReference = FirebaseDatabase.getInstance().getReference("cropinfo")
+
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.
+        )
 
         binding.addCropButton.setOnClickListener(){
+            val new_crop_name= binding.selectCrop.selectedItemPosition.toString()
+            val new_crop_nickname = binding.newCropNickname.text.toString()
+            val new_add_date = binding.newAddDate.text.toString()
 
-            val newItem = Cropinfo(
-                binding.newCropNickname.text.toString(),
-                binding.selectCrop.selectedItem.toString(),
-                binding.newAddDate.text.toString()
-            )
-            Log.d("AddcropdiarypageActivity", "New item: $newItem")
-            val resultIntent = Intent()
-            resultIntent.putExtra("newItem", newItem)
-            setResult(Activity.RESULT_OK, resultIntent)
-            finish()
+            val take_cropinfo = Cropinfo(new_crop_name,new_crop_nickname,new_add_date)
+            FirebaseRef.cropInfo.child(new_crop_nickname).setValue(take_cropinfo)
+
         }
+
+
     }
 }
