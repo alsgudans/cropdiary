@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 class SignuppageActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var binding: ActivitySignuppageBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
