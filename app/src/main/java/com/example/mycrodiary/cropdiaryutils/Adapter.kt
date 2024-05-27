@@ -9,7 +9,7 @@ import com.example.mycrodiary.cropdiaryutils.Cropinfo
 import com.example.mycrodiary.databinding.AdddiaryBinding
 
 class Adapter(val context: Context, val cropList: ArrayList<Cropinfo>): BaseAdapter() {
-
+a
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val binding = AdddiaryBinding.inflate(LayoutInflater.from(context))
 
