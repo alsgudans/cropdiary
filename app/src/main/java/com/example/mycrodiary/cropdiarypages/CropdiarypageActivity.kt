@@ -33,7 +33,7 @@ class CropdiarypageActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.d("count", "onDataChange called")
                 for (snapshot in dataSnapshot.children) {
-                    val name = snapshot.child("name").getValue(String::class.java)
+                    val name = snapshot.child("cropname").getValue(String::class.java)
                     val nickname = snapshot.child("nickname").getValue(String::class.java)
                     val date = snapshot.child("date").getValue(String::class.java)
                     val cropinfo = Cropinfo(name, nickname, date)
