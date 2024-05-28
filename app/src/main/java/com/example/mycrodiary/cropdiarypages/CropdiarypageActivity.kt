@@ -1,70 +1,59 @@
 package com.example.mycrodiary.cropdiarypages
 
+
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
+import android.util.Log
+
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.addcropdiarypage.AddcropdiarypageActivity
 import com.example.mycrodiary.cropdiaryutils.Adapter
+
 import com.example.mycrodiary.cropdiaryutils.Cropinfo
 import com.example.mycrodiary.databinding.ActivityCropdiarypageBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 @Suppress("DEPRECATION")
 class CropdiarypageActivity : AppCompatActivity() {
-
-    private lateinit var listView: ListView
-    private lateinit var itemList: ArrayList<Cropinfo>
-    private lateinit var adapter: Adapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val addSubActivityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val data: Intent? = result.data
-                val newItem = data?.getParcelableExtra<Cropinfo>("newItem")
-                newItem?.let {
-                    itemList.add(it)
-                    adapter.notifyDataSetChanged()
-                }
-            }
-        }
-
         val binding = ActivityCropdiarypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("cropInfo")
 
-        listView = binding.cropDiaryListview
+        val cropList = ArrayList<Cropinfo>()
+        val adapter = Adapter(this, cropList)
+        binding.cropDiaryListview.adapter = adapter
 
-        itemList = ArrayList()
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Log.d("count", "onDataChange called")
+                for (snapshot in dataSnapshot.children) {
+                    val name = snapshot.child("name").getValue(String::class.java)
+                    val nickname = snapshot.child("nickname").getValue(String::class.java)
+                    val date = snapshot.child("date").getValue(String::class.java)
+                    val cropinfo = Cropinfo(name, nickname, date)
+                    cropList.add(cropinfo)
 
-        if (savedInstanceState != null) {
-            val savedData = savedInstanceState.getParcelableArrayList<Cropinfo>("dataList")
-            savedData?.let { itemList.addAll(it) }
-        }
+                }
+                adapter.notifyDataSetChanged()
+            }
 
-        adapter = Adapter(this, itemList) // Adapter 객체 초기화
-        listView.adapter = adapter
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("error count","Data upload Error")
+            }
+        })
 
-        binding.addDiaryBtn.setOnClickListener{
+        binding.addDiaryBtn.setOnClickListener(){
             val intent = Intent(this, AddcropdiarypageActivity::class.java)
-            addSubActivityLauncher.launch(intent)
+            startActivity(intent)
         }
 
 
-    }
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putParcelableArrayList("dataList", itemList)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        itemList = savedInstanceState.getParcelableArrayList("dataList") ?: ArrayList()
-        adapter.notifyDataSetChanged()
     }
 }
 

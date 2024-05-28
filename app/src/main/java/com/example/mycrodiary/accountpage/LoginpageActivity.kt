@@ -18,26 +18,24 @@ class LoginpageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-
-
-        auth = Firebase.auth
-
         val binding = ActivityLoginpageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = Firebase.auth
 
         val move_signinpage = Intent(this, SignuppageActivity::class.java)
         val move_mainpage = Intent(this, MainpageActivity::class.java)
 
         binding.signBtn.setOnClickListener(){
             startActivity(move_signinpage)
+            finish()
         }
 
         binding.loginBtn.setOnClickListener{
             val email = binding.inputEmail.text.toString()
             val pw = binding.inputPw.text.toString()
 
-            if (email.isNullOrBlank() || pw.isNullOrBlank()) {
+            if (email.isBlank() || pw.isBlank()) {
                 Toast.makeText(this, "Email 혹은 Password를 입력해주세요.",Toast.LENGTH_LONG).show()
             }
             else{
@@ -46,6 +44,7 @@ class LoginpageActivity : AppCompatActivity() {
                         Log.d("TAG", "signInWithEmail:success")
                         Toast.makeText(this,"로그인 성공",Toast.LENGTH_LONG).show()
                         startActivity(move_mainpage)
+                        finish()
                     } else {
                         Log.d("TAG", "signInWithEmail:failure", task.exception)
                         Toast.makeText(this, "Email 혹은 Password를 확인하세요.", Toast.LENGTH_LONG,).show()

@@ -1,5 +1,6 @@
 package com.example.mycrodiary.cropdiaryutils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +8,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.mycrodiary.R
-import com.example.mycrodiary.cropdiaryutils.Cropinfo
-import com.example.mycrodiary.databinding.AdddiaryBinding
 
-class Adapter(val context: Context, val cropList: ArrayList<Cropinfo>): BaseAdapter() {
+class Adapter(val context: Context, private val cropList: ArrayList<Cropinfo>): BaseAdapter() {
 
+    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         // XML 레이아웃 파일을 인플레이션하여 뷰 생성
         val view = LayoutInflater.from(context).inflate(R.layout.adddiary, parent, false)
@@ -23,7 +23,7 @@ class Adapter(val context: Context, val cropList: ArrayList<Cropinfo>): BaseAdap
 
         // 해당 위치의 데이터를 가져와서 각각의 텍스트뷰에 설정
         val cropInfo = cropList[position]
-        nameTextView.text = cropInfo.crop
+        nameTextView.text = cropInfo.cropname
         nicknameTextView.text = cropInfo.nickname
         dateTextView.text = cropInfo.date
 
