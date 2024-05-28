@@ -18,14 +18,13 @@ import com.google.firebase.database.ValueEventListener
 
 @Suppress("DEPRECATION")
 class CropdiarypageActivity : AppCompatActivity() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityCropdiarypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("cropInfo")
+
         val cropList = ArrayList<Cropinfo>()
         val adapter = Adapter(this, cropList)
         binding.cropDiaryListview.adapter = adapter
