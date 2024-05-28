@@ -11,34 +11,40 @@ import com.example.mycrodiary.cropdiaryutils.Adapter
 
 import com.example.mycrodiary.cropdiaryutils.Cropinfo
 import com.example.mycrodiary.databinding.ActivityCropdiarypageBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-@Suppress("DEPRECATION")
 class CropdiarypageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityCropdiarypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("cropInfo")
+        // Firebase 인증 및 데이터베이스 참조
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("cropInfo")
+            .child(uid)
 
         val cropList = ArrayList<Cropinfo>()
         val adapter = Adapter(this, cropList)
         binding.cropDiaryListview.adapter = adapter
 
+        // 작물 정보를 Firebase Realtime Database에서 가져오기
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.d("count", "onDataChange called")
+                cropList.clear() // 리스트 초기화
                 for (snapshot in dataSnapshot.children) {
-                    val name = snapshot.child("cropname").getValue(String::class.java)
+                    val cropName = snapshot.child("cropname").getValue(String::class.java)
                     val nickname = snapshot.child("nickname").getValue(String::class.java)
                     val date = snapshot.child("date").getValue(String::class.java)
-                    val cropinfo = Cropinfo(name, nickname, date)
-                    cropList.add(cropinfo)
-
+                    if (cropName != null && nickname != null && date != null) {
+                        val cropInfo = Cropinfo(cropName, nickname, date)
+                        cropList.add(cropInfo)
+                    }
                 }
                 adapter.notifyDataSetChanged()
             }
@@ -52,8 +58,7 @@ class CropdiarypageActivity : AppCompatActivity() {
             val intent = Intent(this, AddcropdiarypageActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 }
+
 

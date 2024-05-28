@@ -1,7 +1,5 @@
 package com.example.mycrodiary.addcropdiarypage
 
-
-
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -10,12 +8,13 @@ import com.example.mycrodiary.R
 import com.example.mycrodiary.accountutil.FirebaseRef
 import com.example.mycrodiary.cropdiaryutils.Cropinfo
 import com.example.mycrodiary.databinding.ActivityAddcropdiarypageBinding
+import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
-
 
 class AddcropdiarypageActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddcropdiarypageBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,23 +22,28 @@ class AddcropdiarypageActivity : AppCompatActivity() {
         binding = ActivityAddcropdiarypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
+
         val selectcropData = resources.getStringArray(R.array.crop_array)
-        val spinnerAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,selectcropData)
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, selectcropData)
         binding.selectCrop.adapter = spinnerAdapter
 
         binding.newAddDate.setOnClickListener {
             showDatePicker()
         }
 
-
         binding.addCropButton.setOnClickListener {
-            val newCropName= binding.selectCrop.selectedItem.toString()
-            val newCropNickname = binding.newCropNickname.text.toString()
+            val newCropName = binding.selectCrop.selectedItem.toString()
             val newAddDate = binding.newAddDate.text.toString()
+            val newCropNickname = binding.newCropNickname.text.toString()
 
-            val takeCropinfo = Cropinfo(newCropName,newCropNickname,newAddDate)
-            FirebaseRef.cropInfo.child(newCropNickname).setValue(takeCropinfo)
+            val currentUser = auth.currentUser
+            val uid = currentUser?.uid
 
+            if (uid != null) {
+                val takeCropinfo = Cropinfo(newCropName, newCropNickname, newAddDate) // 닉네임 대신 UID 사용
+                FirebaseRef.cropInfo.child(uid).push().setValue(takeCropinfo)
+            }
         }
     }
 
@@ -56,5 +60,4 @@ class AddcropdiarypageActivity : AppCompatActivity() {
         }, year, month, day)
         datePickerDialog.show()
     }
-
 }
