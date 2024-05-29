@@ -2,7 +2,9 @@ package com.example.mycrodiary.cropdiary_daypage
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.GridLayout
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.R
 import com.example.mycrodiary.databinding.ActivityDailydiaryBinding
@@ -16,15 +18,43 @@ class dailydiaryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 버튼을 생성하고 LinearLayout에 추가
-        for (i in 1..42) {
-            val button = Button(this)
-            button.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
+        val numColumns = 7
+        val numRows = 6
+
+        for (i in 1..numRows) {
+            val rowLayout = LinearLayout(this)
+            rowLayout.orientation = LinearLayout.HORIZONTAL
+            rowLayout.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            button.text = "day $i"
-            button.setBackgroundColor(resources.getColor(R.color.yello_green)) // 배경색 설정
-            binding.buttonLayout.addView(button) // 뷰바인딩으로 레이아웃에 버튼 추가
+
+            for (j in 1..numColumns) {
+                val button = Button(this)
+                button.layoutParams = LinearLayout.LayoutParams(
+                    0,
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    1.0f
+                )
+                button.text = "Day ${j + (i - 1) * numColumns}"
+                button.setBackgroundColor(resources.getColor(R.color.yello_green))
+                rowLayout.addView(button)
+            }
+
+            binding.buttonLayout.addView(rowLayout)
         }
+
+
+        val cropName = intent.getStringExtra("cropname")
+        val nickname = intent.getStringExtra("nickname")
+        val date = intent.getStringExtra("date")
+
+        val cropNameTextView = findViewById<TextView>(R.id.crop_name)
+        val nicknameTextView = findViewById<TextView>(R.id.crop_nickname)
+        val dateTextView = findViewById<TextView>(R.id.add_date)
+
+        cropNameTextView.text = cropName
+        nicknameTextView.text = nickname
+        dateTextView.text = date
     }
 }

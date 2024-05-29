@@ -7,6 +7,7 @@ import android.util.Log
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.addcropdiarypage.AddcropdiarypageActivity
+import com.example.mycrodiary.cropdiary_daypage.dailydiaryActivity
 import com.example.mycrodiary.cropdiaryutils.Adapter
 
 import com.example.mycrodiary.cropdiaryutils.Cropinfo
@@ -56,6 +57,18 @@ class CropdiarypageActivity : AppCompatActivity() {
 
         binding.addDiaryBtn.setOnClickListener(){
             val intent = Intent(this, AddcropdiarypageActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.cropDiaryListview.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem = cropList[position]
+
+            val intent = Intent(this, dailydiaryActivity::class.java)
+
+            intent.putExtra("cropname",selectedItem.cropname)
+            intent.putExtra("nickname",selectedItem.nickname)
+            intent.putExtra("date", selectedItem.date)
+
             startActivity(intent)
         }
     }
