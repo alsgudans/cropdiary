@@ -63,7 +63,7 @@ class SignuppageActivity : AppCompatActivity() {
                                         Toast.makeText(this@SignuppageActivity, "이미 사용 중인 닉네임입니다. 다른 닉네임을 선택하세요.", Toast.LENGTH_LONG).show()
                                     } else {
                                         // 닉네임 중복이 없으면 사용자 정보 저장
-                                        val userInfo = UserInfo(newEmail, nickname, uid)
+                                        val userInfo = UserInfo(newEmail, nickname, uid,"0")
                                         FirebaseRef.userInfo.child(nickname).setValue(userInfo)
                                         Toast.makeText(this@SignuppageActivity, "회원가입 성공", Toast.LENGTH_LONG).show()
                                         startActivity(intent)

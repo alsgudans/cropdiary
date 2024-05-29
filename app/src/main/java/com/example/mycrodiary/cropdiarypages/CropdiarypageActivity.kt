@@ -29,7 +29,6 @@ class CropdiarypageActivity : AppCompatActivity() {
         val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("cropInfo")
             .child(uid)
-
         val cropList = ArrayList<Cropinfo>()
         val adapter = Adapter(this, cropList)
         binding.cropDiaryListview.adapter = adapter
@@ -57,12 +56,12 @@ class CropdiarypageActivity : AppCompatActivity() {
 
         binding.addDiaryBtn.setOnClickListener(){
             val intent = Intent(this, AddcropdiarypageActivity::class.java)
+
             startActivity(intent)
         }
 
         binding.cropDiaryListview.setOnItemClickListener { parent, view, position, id ->
             val selectedItem = cropList[position]
-
             val intent = Intent(this, dailydiaryActivity::class.java)
 
             intent.putExtra("cropname",selectedItem.cropname)
