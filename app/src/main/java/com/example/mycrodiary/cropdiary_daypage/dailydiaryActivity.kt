@@ -1,5 +1,6 @@
 package com.example.mycrodiary.cropdiary_daypage
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.GridLayout
@@ -38,11 +39,19 @@ class dailydiaryActivity : AppCompatActivity() {
                 )
                 button.text = "Day ${j + (i - 1) * numColumns}"
                 button.setBackgroundColor(resources.getColor(R.color.yello_green))
+
+                button.setOnClickListener {
+                    val intent = Intent(this@dailydiaryActivity, DiarypageActivity::class.java)
+                    startActivity(intent)
+                }
+
                 rowLayout.addView(button)
             }
 
             binding.buttonLayout.addView(rowLayout)
         }
+
+
 
 
         val cropName = intent.getStringExtra("cropname")

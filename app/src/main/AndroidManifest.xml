@@ -13,8 +13,11 @@
         android:theme="@style/Theme.Mycrodiary"
         tools:targetApi="31">
         <activity
+            android:name=".cropdiary_daypage.DiarypageActivity"
+            android:exported="false" />
+        <activity
             android:name=".cropdiarypages.CropDetailActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".cropdiary_daypage.dailydiaryActivity"
             android:exported="false" />
