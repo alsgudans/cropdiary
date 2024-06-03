@@ -14,5 +14,7 @@ class DiarypageActivity : AppCompatActivity() {
         val binding = ActivityDiarypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.crop1.setOnClickListener()
+
     }
 }
