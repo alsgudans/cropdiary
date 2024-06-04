@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context=".cropdiary_daypage.dailydiaryActivity">
+    tools:context=".Cropdiary_Pages.dailydiaryActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

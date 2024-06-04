@@ -1,12 +1,12 @@
-package com.example.mycrodiary.addcropdiarypage
+package com.example.mycrodiary.Add_Cropdiary_Pages
 
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.R
-import com.example.mycrodiary.accountutil.FirebaseRef
-import com.example.mycrodiary.cropdiaryutils.Cropinfo
+import com.example.mycrodiary.Database_Utils.FirebaseRef
+import com.example.mycrodiary.Database_Utils.Cropinfo
 import com.example.mycrodiary.databinding.ActivityAddcropdiarypageBinding
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar

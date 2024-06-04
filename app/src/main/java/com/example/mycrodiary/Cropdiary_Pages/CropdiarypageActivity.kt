@@ -1,4 +1,4 @@
-package com.example.mycrodiary.cropdiarypages
+package com.example.mycrodiary.Cropdiary_Pages
 
 
 import android.content.Intent
@@ -6,11 +6,10 @@ import android.os.Bundle
 import android.util.Log
 
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mycrodiary.addcropdiarypage.AddcropdiarypageActivity
-import com.example.mycrodiary.cropdiary_daypage.dailydiaryActivity
-import com.example.mycrodiary.cropdiaryutils.Adapter
+import com.example.mycrodiary.Add_Cropdiary_Pages.AddcropdiarypageActivity
+import com.example.mycrodiary.Cropdiary_Utils.Adapter
 
-import com.example.mycrodiary.cropdiaryutils.Cropinfo
+import com.example.mycrodiary.Database_Utils.Cropinfo
 import com.example.mycrodiary.databinding.ActivityCropdiarypageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -62,7 +61,7 @@ class CropdiarypageActivity : AppCompatActivity() {
 
         binding.cropDiaryListview.setOnItemClickListener { parent, view, position, id ->
             val selectedItem = cropList[position]
-            val intent = Intent(this, dailydiaryActivity::class.java)
+            val intent = Intent(this, DailydiaryActivity::class.java)
 
             intent.putExtra("cropname",selectedItem.cropname)
             intent.putExtra("nickname",selectedItem.nickname)

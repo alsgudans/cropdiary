@@ -1,11 +1,7 @@
-package com.example.mycrodiary.mypage
+package com.example.mycrodiary.My_Pages
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.mycrodiary.R
 import com.example.mycrodiary.databinding.ActivityMypageBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth

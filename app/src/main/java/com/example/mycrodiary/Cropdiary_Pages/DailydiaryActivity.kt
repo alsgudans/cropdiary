@@ -1,16 +1,15 @@
-package com.example.mycrodiary.cropdiary_daypage
+package com.example.mycrodiary.Cropdiary_Pages
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.GridLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.R
 import com.example.mycrodiary.databinding.ActivityDailydiaryBinding
 
-class dailydiaryActivity : AppCompatActivity() {
+class DailydiaryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDailydiaryBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +40,7 @@ class dailydiaryActivity : AppCompatActivity() {
                 button.setBackgroundColor(resources.getColor(R.color.yello_green))
 
                 button.setOnClickListener {
-                    val intent = Intent(this@dailydiaryActivity, DiarypageActivity::class.java)
+                    val intent = Intent(this@DailydiaryActivity, DiarypageActivity::class.java)
                     startActivity(intent)
                 }
 
@@ -50,7 +49,6 @@ class dailydiaryActivity : AppCompatActivity() {
 
             binding.buttonLayout.addView(rowLayout)
         }
-
 
 
 

@@ -1,4 +1,4 @@
-package com.example.mycrodiary.cropdiaryutils
+package com.example.mycrodiary.Cropdiary_Utils
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.mycrodiary.Database_Utils.Cropinfo
 import com.example.mycrodiary.R
 
 class Adapter(val context: Context, private val cropList: ArrayList<Cropinfo>): BaseAdapter() {

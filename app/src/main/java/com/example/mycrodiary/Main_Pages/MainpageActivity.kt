@@ -1,13 +1,13 @@
-package com.example.mycrodiary.mainpage
+package com.example.mycrodiary.Main_Pages
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.databinding.ActivityMainpageBinding
-import com.example.mycrodiary.cropdiarypages.CropdiarypageActivity
-import com.example.mycrodiary.mypage.MypageActivity
-import com.example.mycrodiary.mytreepage.MytreepageActivity
-import com.example.mycrodiary.settingpage.SettingpageActivity
+import com.example.mycrodiary.Cropdiary_Pages.CropdiarypageActivity
+import com.example.mycrodiary.My_Pages.MypageActivity
+import com.example.mycrodiary.Mytree_Pages.MytreepageActivity
+import com.example.mycrodiary.Setting_Pages.SettingpageActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth

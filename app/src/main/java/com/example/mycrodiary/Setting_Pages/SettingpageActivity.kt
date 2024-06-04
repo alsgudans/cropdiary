@@ -1,11 +1,7 @@
-package com.example.mycrodiary.settingpage
+package com.example.mycrodiary.Setting_Pages
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.mycrodiary.R
 import com.example.mycrodiary.databinding.ActivitySettingpageBinding
 
 class SettingpageActivity : AppCompatActivity() {

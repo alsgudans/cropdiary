@@ -1,14 +1,10 @@
-package com.example.mycrodiary.cropdiary_daypage
+package com.example.mycrodiary.Cropdiary_Pages
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.mycrodiary.R
-import com.example.mycrodiary.cropdiaryutils.Cropinfo
+import com.example.mycrodiary.Database_Utils.SensorDataInfo
 import com.example.mycrodiary.databinding.ActivityDiarypageBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -54,5 +50,11 @@ class DiarypageActivity : AppCompatActivity() {
                 // 에러 처리
             }
         })
+
+        binding.uploadBtn.setOnClickListener(){
+            val intent = Intent(this, dailydiaryActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

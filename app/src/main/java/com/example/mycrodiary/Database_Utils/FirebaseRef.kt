@@ -1,4 +1,4 @@
-package com.example.mycrodiary.accountutil
+package com.example.mycrodiary.Database_Utils
 
 import com.google.firebase.Firebase
 import com.google.firebase.database.database

@@ -1,4 +1,4 @@
-package com.example.mycrodiary.accountutil
+package com.example.mycrodiary.Database_Utils
 
 data class UserInfo(
     var email: String? = null,

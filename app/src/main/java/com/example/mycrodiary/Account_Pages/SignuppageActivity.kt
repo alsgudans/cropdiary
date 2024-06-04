@@ -1,12 +1,12 @@
-package com.example.mycrodiary.accountpage
+package com.example.mycrodiary.Account_Pages
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mycrodiary.accountutil.FirebaseRef
-import com.example.mycrodiary.accountutil.UserInfo
+import com.example.mycrodiary.Database_Utils.FirebaseRef
+import com.example.mycrodiary.Database_Utils.UserInfo
 import com.example.mycrodiary.databinding.ActivitySignuppageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
