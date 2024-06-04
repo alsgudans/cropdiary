@@ -52,7 +52,7 @@ class DiarypageActivity : AppCompatActivity() {
         })
 
         binding.uploadBtn.setOnClickListener(){
-            val intent = Intent(this, dailydiaryActivity::class.java)
+            val intent = Intent(this, DailydiaryActivity::class.java)
             startActivity(intent)
             finish()
         }
