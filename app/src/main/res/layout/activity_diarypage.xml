@@ -242,22 +242,26 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="희석액 공급량: "/>
+                            android:text="희석액 공급량: "
+                            android:textSize="20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="온                도: "/>
+                            android:text="온                도: "
+                            android:textSize="20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text= "습                도: "/>
+                            android:text= "습                도: "
+                            android:textSize="20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text= "조                도: "/>
+                            android:text= "조                도: "
+                            android:textSize="20dp"/>
 
                     </LinearLayout>
 
@@ -270,31 +274,49 @@
                             android:id="@+id/flow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="희석액 공급량"/>
+                            android:text="희석액 공급량"
+                            android:textSize="20dp"/>
 
                         <TextView
                             android:id="@+id/temperature"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="온도"/>
+                            android:text="온도"
+                            android:textSize="20dp"/>
 
                         <TextView
                             android:id="@+id/humidity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text= "습도"/>
+                            android:text= "습도"
+                            android:textSize="20dp"/>
 
 
                         <TextView
-                            android:id="@+id/UV"
+                            android:id="@+id/illumination"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text= "조도"/>
+                            android:text= "조도"
+                            android:textSize="20dp"/>
 
                     </LinearLayout>
 
 
                 </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/upload_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="작성 완료"
+                    android:textSize="25dp"/>
 
             </LinearLayout>
 

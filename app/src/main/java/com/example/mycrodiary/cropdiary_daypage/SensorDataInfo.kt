@@ -1,4 +1,6 @@
 package com.example.mycrodiary.cropdiary_daypage
 
-data class SensorDataInfo(val nickname:String? = null, val water:String? = null, val humidity:String? = null,
-    val lightlevel:String? = null, val temperature:String? = null)
+data class SensorDataInfo(val humidity: Double = 0.0,
+                          val illumination: Double = 0.0,
+                          val temperature: Double = 0.0,
+                          val weight: Double = 0.0)
