@@ -17,6 +17,18 @@ class DailydiaryActivity : AppCompatActivity() {
         binding = ActivityDailydiaryBinding.inflate(layoutInflater) // 뷰바인딩 초기화
         setContentView(binding.root)
 
+        val cropName = intent.getStringExtra("cropname")
+        val nickname = intent.getStringExtra("nickname")
+        val date = intent.getStringExtra("date")
+
+        val cropNameTextView = findViewById<TextView>(R.id.crop_name)
+        val nicknameTextView = findViewById<TextView>(R.id.crop_nickname)
+        val dateTextView = findViewById<TextView>(R.id.add_date)
+
+        cropNameTextView.text = cropName
+        nicknameTextView.text = nickname
+        dateTextView.text = date
+
         // 버튼을 생성하고 LinearLayout에 추가
         val numColumns = 7
         val numRows = 6
@@ -36,11 +48,17 @@ class DailydiaryActivity : AppCompatActivity() {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     1.0f
                 )
+                val buttonId = j + (i - 1) * numColumns // 각 버튼에 할당될 고유한 ID 계산
+                button.id = buttonId // 각 버튼에 ID 설정
                 button.text = "Day ${j + (i - 1) * numColumns}"
                 button.setBackgroundColor(resources.getColor(R.color.yello_green))
 
+                val btnId = "SensorDataInfo${j + (i - 1) * numColumns}"
+
                 button.setOnClickListener {
                     val intent = Intent(this@DailydiaryActivity, DiarypageActivity::class.java)
+                    intent.putExtra("btnId", btnId)
+                    intent.putExtra("CropNickname", nickname)
                     startActivity(intent)
                 }
 
@@ -49,19 +67,5 @@ class DailydiaryActivity : AppCompatActivity() {
 
             binding.buttonLayout.addView(rowLayout)
         }
-
-
-
-        val cropName = intent.getStringExtra("cropname")
-        val nickname = intent.getStringExtra("nickname")
-        val date = intent.getStringExtra("date")
-
-        val cropNameTextView = findViewById<TextView>(R.id.crop_name)
-        val nicknameTextView = findViewById<TextView>(R.id.crop_nickname)
-        val dateTextView = findViewById<TextView>(R.id.add_date)
-
-        cropNameTextView.text = cropName
-        nicknameTextView.text = nickname
-        dateTextView.text = date
     }
 }

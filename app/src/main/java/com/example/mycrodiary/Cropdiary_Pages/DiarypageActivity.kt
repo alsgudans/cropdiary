@@ -1,11 +1,11 @@
 package com.example.mycrodiary.Cropdiary_Pages
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.Database_Utils.SensorDataInfo
 import com.example.mycrodiary.databinding.ActivityDiarypageBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -19,12 +19,19 @@ class DiarypageActivity : AppCompatActivity() {
     private lateinit var temperatureTextView: TextView
     private lateinit var humidityTextView: TextView
     private lateinit var illuminationTextView: TextView
+    private lateinit var auth: FirebaseAuth
+    private lateinit var buttonId: String
+    private lateinit var nickname: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityDiarypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
+
+        val currentUser = auth.currentUser
+        val uid = currentUser?.uid.toString()
 
         databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .reference
@@ -34,8 +41,13 @@ class DiarypageActivity : AppCompatActivity() {
         humidityTextView = binding.humidity
         illuminationTextView = binding.illumination
 
+        nickname = intent.getStringExtra("CropNickname").toString()
+
+        buttonId = intent.getStringExtra("btnId").toString()
+
         databaseReference.child("sensor").addValueEventListener(object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+
                 val sensorData = dataSnapshot.getValue(SensorDataInfo::class.java)
 
                 sensorData?.let {
@@ -52,8 +64,16 @@ class DiarypageActivity : AppCompatActivity() {
         })
 
         binding.uploadBtn.setOnClickListener(){
-            val intent = Intent(this, DailydiaryActivity::class.java)
-            startActivity(intent)
+            val flowText = flowTextView.text.toString().toDouble()
+            val temperatureText = temperatureTextView.text.toString().toDouble()
+            val humidityText = humidityTextView.text.toString().toDouble()
+            val illuminationText = illuminationTextView.text.toString().toDouble()
+
+            val buttonDataRef = databaseReference.child("cropInfo").child(uid).child(nickname).child(buttonId)
+
+            val newData = SensorDataInfo(flowText, temperatureText, humidityText, illuminationText)
+            buttonDataRef.setValue(newData)
+
             finish()
         }
     }

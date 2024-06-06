@@ -16,10 +16,7 @@
             android:name=".Cropdiary_Pages.DiarypageActivity"
             android:exported="false" />
         <activity
-            android:name=".Cropdiary_Pages.CropDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Cropdiary_Pages.dailydiaryActivity"
+            android:name=".Cropdiary_Pages.DailydiaryActivity"
             android:exported="false" />
         <activity
             android:name=".Add_Cropdiary_Pages.AddcropdiarypageActivity"
