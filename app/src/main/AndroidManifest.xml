@@ -13,31 +13,34 @@
         android:theme="@style/Theme.Mycrodiary"
         tools:targetApi="31">
         <activity
-            android:name=".cropdiary_daypage.dailydiaryActivity"
+            android:name=".Cropdiary_Pages.DiarypageActivity"
             android:exported="false" />
         <activity
-            android:name=".addcropdiarypage.AddcropdiarypageActivity"
+            android:name=".Cropdiary_Pages.DailydiaryActivity"
             android:exported="false" />
         <activity
-            android:name=".cropdiarypages.CropdiarypageActivity"
+            android:name=".Add_Cropdiary_Pages.AddcropdiarypageActivity"
             android:exported="false" />
         <activity
-            android:name=".settingpage.SettingpageActivity"
+            android:name=".Cropdiary_Pages.CropdiarypageActivity"
             android:exported="false" />
         <activity
-            android:name=".mytreepage.MytreepageActivity"
+            android:name=".Setting_Pages.SettingpageActivity"
             android:exported="false" />
         <activity
-            android:name=".mypage.MypageActivity"
+            android:name=".Mytree_Pages.MytreepageActivity"
             android:exported="false" />
         <activity
-            android:name=".accountpage.SignuppageActivity"
+            android:name=".My_Pages.MypageActivity"
             android:exported="false" />
         <activity
-            android:name=".mainpage.MainpageActivity"
+            android:name=".Account_Pages.SignuppageActivity"
             android:exported="false" />
         <activity
-            android:name=".accountpage.LoginpageActivity"
+            android:name=".Main_Pages.MainpageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Account_Pages.LoginpageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

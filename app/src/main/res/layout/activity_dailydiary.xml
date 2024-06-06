@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".cropdiary_daypage.dailydiaryActivity">
+
+    tools:context=".Cropdiary_Pages.DailydiaryActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -28,5 +29,47 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="3"
+        >
+
+        <TextView
+            android:id="@+id/crop_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="식물 별명"
+            android:textSize="25dp"
+            />
+
+        <TextView
+            android:id="@+id/crop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="식물 이름"
+            android:textSize="25dp"/>
+
+        <TextView
+            android:id="@+id/add_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생성 일자"
+            android:textSize="25dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+
+    </LinearLayout>
 
 </LinearLayout>

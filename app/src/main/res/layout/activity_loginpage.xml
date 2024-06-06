@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".accountpage.LoginpageActivity">
+    tools:context=".Account_Pages.LoginpageActivity">
 
 
     <TextView
