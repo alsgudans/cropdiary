@@ -41,8 +41,7 @@ class CropdiarypageActivity : AppCompatActivity() {
                     val nickname = snapshot.child("nickname").getValue(String::class.java)
                     val date = snapshot.child("date").getValue(String::class.java)
                     if (cropName != null && nickname != null && date != null) {
-                        val cropInfo = Cropinfo(cropName, nickname, date
-                        )
+                        val cropInfo = Cropinfo(cropName, nickname, date)
                         cropList.add(cropInfo)
                     }
                 }

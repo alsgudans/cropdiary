@@ -2,14 +2,26 @@ package com.example.mycrodiary.Cropdiary_Pages
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mycrodiary.Cropdiary_Utils.Adapter
+import com.example.mycrodiary.Cropdiary_Utils.DiaryAdapter
+import com.example.mycrodiary.Database_Utils.Cropinfo
+import com.example.mycrodiary.Database_Utils.SensorDataInfo
 import com.example.mycrodiary.R
 import com.example.mycrodiary.databinding.ActivityDailydiaryBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class DailydiaryActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var binding: ActivityDailydiaryBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,8 +29,12 @@ class DailydiaryActivity : AppCompatActivity() {
         binding = ActivityDailydiaryBinding.inflate(layoutInflater) // 뷰바인딩 초기화
         setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        val uid = currentUser?.uid.toString()
+
         val cropName = intent.getStringExtra("cropname")
-        val nickname = intent.getStringExtra("nickname")
+        val nickname = intent.getStringExtra("nickname").toString()
         val date = intent.getStringExtra("date")
 
         val cropNameTextView = findViewById<TextView>(R.id.crop_name)
@@ -29,43 +45,41 @@ class DailydiaryActivity : AppCompatActivity() {
         nicknameTextView.text = nickname
         dateTextView.text = date
 
-        // 버튼을 생성하고 LinearLayout에 추가
-        val numColumns = 7
-        val numRows = 6
+        val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("cropInfo")
+            .child(uid)
+            .child(nickname)
+        val addedDiaryList = ArrayList<SensorDataInfo>()
+        val adapter = DiaryAdapter(this, addedDiaryList)
+        binding.addedDiaryList.adapter = adapter
 
-        for (i in 1..numRows) {
-            val rowLayout = LinearLayout(this)
-            rowLayout.orientation = LinearLayout.HORIZONTAL
-            rowLayout.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                addedDiaryList.clear() // 리스트 초기화
+                for (snapshot in dataSnapshot.children) {
 
-            for (j in 1..numColumns) {
-                val button = Button(this)
-                button.layoutParams = LinearLayout.LayoutParams(
-                    0,
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    1.0f
-                )
-                val buttonId = j + (i - 1) * numColumns // 각 버튼에 할당될 고유한 ID 계산
-                button.id = buttonId // 각 버튼에 ID 설정
-                button.text = "Day ${j + (i - 1) * numColumns}"
-                button.setBackgroundColor(resources.getColor(R.color.yello_green))
 
-                val btnId = "SensorDataInfo${j + (i - 1) * numColumns}"
-
-                button.setOnClickListener {
-                    val intent = Intent(this@DailydiaryActivity, DiarypageActivity::class.java)
-                    intent.putExtra("btnId", btnId)
-                    intent.putExtra("CropNickname", nickname)
-                    startActivity(intent)
                 }
-
-                rowLayout.addView(button)
+                adapter.notifyDataSetChanged()
             }
 
-            binding.buttonLayout.addView(rowLayout)
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("error count","Data upload Error")
+            }
+        })
+
+        binding.addDiaryBtn.setOnClickListener(){
+            val intent = Intent(this,DiarypageActivity::class.java)
+            intent.putExtra("cropname", cropName)
+            intent.putExtra("nickname", nickname)
+            intent.putExtra("date", date)
+            startActivity(intent)
+            finish()
         }
+
+
+
+
+
     }
 }

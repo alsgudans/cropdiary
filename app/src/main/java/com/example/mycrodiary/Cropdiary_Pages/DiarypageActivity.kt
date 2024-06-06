@@ -20,7 +20,6 @@ class DiarypageActivity : AppCompatActivity() {
     private lateinit var humidityTextView: TextView
     private lateinit var illuminationTextView: TextView
     private lateinit var auth: FirebaseAuth
-    private lateinit var buttonId: String
     private lateinit var nickname: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,9 +40,7 @@ class DiarypageActivity : AppCompatActivity() {
         humidityTextView = binding.humidity
         illuminationTextView = binding.illumination
 
-        nickname = intent.getStringExtra("CropNickname").toString()
-
-        buttonId = intent.getStringExtra("btnId").toString()
+        nickname = intent.getStringExtra("cropname").toString()
 
         databaseReference.child("sensor").addValueEventListener(object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -51,7 +48,6 @@ class DiarypageActivity : AppCompatActivity() {
                 val sensorData = dataSnapshot.getValue(SensorDataInfo::class.java)
 
                 sensorData?.let {
-                    // 데이터에서 필요한 값을 가져와서 TextView에 설정
                     flowTextView.text = "${it.weight}"
                     temperatureTextView.text = "${it.temperature}"
                     humidityTextView.text = "${it.humidity}"
@@ -64,12 +60,13 @@ class DiarypageActivity : AppCompatActivity() {
         })
 
         binding.uploadBtn.setOnClickListener(){
+
             val flowText = flowTextView.text.toString().toDouble()
             val temperatureText = temperatureTextView.text.toString().toDouble()
             val humidityText = humidityTextView.text.toString().toDouble()
             val illuminationText = illuminationTextView.text.toString().toDouble()
 
-            val buttonDataRef = databaseReference.child("cropInfo").child(uid).child(nickname).child(buttonId)
+            val buttonDataRef = databaseReference.child("cropInfo").child(uid).child(nickname)
 
             val newData = SensorDataInfo(flowText, temperatureText, humidityText, illuminationText)
             buttonDataRef.setValue(newData)
