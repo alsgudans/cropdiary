@@ -32,7 +32,8 @@
             android:id="@+id/input_email"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:hint="email"/>
+            android:hint="email"
+            android:singleLine="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +50,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint="password"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:singleLine="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,8 +102,5 @@
         android:text="serach id/pw"
         android:textColor="@color/black"
         />
-
-
-
 
 </LinearLayout>

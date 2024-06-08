@@ -30,8 +30,8 @@
             android:id="@+id/new_nickname"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:hint="Nick name"/>
+            android:hint="Nick name"
+            android:singleLine="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,8 +47,8 @@
             android:id="@+id/new_email"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:hint="Email"/>
+            android:hint="Email"
+            android:singleLine="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,8 +65,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:inputType="textPassword"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,9 +82,9 @@
             android:id="@+id/check_new_pw"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:inputType="textPassword"
-            android:hint="Check Password"/>
+            android:hint="Check Password"
+            android:singleLine="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
