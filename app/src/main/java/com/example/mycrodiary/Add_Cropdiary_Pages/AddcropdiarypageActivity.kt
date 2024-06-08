@@ -41,8 +41,7 @@ class AddcropdiarypageActivity : AppCompatActivity() {
             val uid = currentUser?.uid
 
             if (uid != null) {
-                val takeCropinfo = Cropinfo(newCropName, newCropNickname, newAddDate
-                ) // 닉네임 대신 UID 사용
+                val takeCropinfo = Cropinfo(newCropName, newCropNickname, newAddDate) // 닉네임 대신 UID 사용
                 FirebaseRef.cropInfo.child(uid).child(newCropNickname).setValue(takeCropinfo)
             }
         }
