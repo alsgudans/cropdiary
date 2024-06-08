@@ -36,38 +36,49 @@ class SignuppageActivity : AppCompatActivity() {
 
             if (newEmail.isBlank()) {
                 Toast.makeText(this, "Email을 입력하세요.", Toast.LENGTH_LONG).show()
-            }
-            else if (newPw.isBlank()) {
+            } else if (newPw.isBlank()) {
                 Toast.makeText(this, "Password를 입력하세요.", Toast.LENGTH_LONG).show()
-            }
-            else if (nickname.isBlank()) {
+            } else if (nickname.isBlank()) {
                 Toast.makeText(this, "Nickname을 입력하세요", Toast.LENGTH_LONG).show()
-            }
-            else if (checkNewPw != newPw) {
+            } else if (checkNewPw != newPw) {
                 Toast.makeText(this, "Password가 일치하지 않습니다. 다시 확인하세요.", Toast.LENGTH_LONG).show()
-            }
-            else {
+            } else {
                 // 사용자 생성 및 닉네임 중복 확인
                 auth.createUserWithEmailAndPassword(newEmail, newPw)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             // Firebase에서 제공하는 사용자 UID 가져오기
                             val user = auth.currentUser
-                            val uid = user?.uid
+                            val uid = user?.uid.toString()
 
                             // Firebase Realtime Database에서 닉네임 중복 확인
-                            FirebaseRef.userInfo.child(nickname).addListenerForSingleValueEvent(object :
-                                ValueEventListener {
+                            FirebaseRef.userInfo.addListenerForSingleValueEvent(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {
-                                    if (snapshot.exists()) {
+                                    var isNicknameUsed = false
+
+                                    for (userSnapshot in snapshot.children) {
+                                        val existingNickname = userSnapshot.child("nickname").getValue(String::class.java)
+                                        if (existingNickname == nickname) {
+                                            isNicknameUsed = true
+                                            break
+                                        }
+                                    }
+
+                                    if (isNicknameUsed) {
                                         Toast.makeText(this@SignuppageActivity, "이미 사용 중인 닉네임입니다. 다른 닉네임을 선택하세요.", Toast.LENGTH_LONG).show()
                                     } else {
                                         // 닉네임 중복이 없으면 사용자 정보 저장
-                                        val userInfo = UserInfo(newEmail, nickname, uid,"0")
-                                        FirebaseRef.userInfo.child(nickname).setValue(userInfo)
-                                        Toast.makeText(this@SignuppageActivity, "회원가입 성공", Toast.LENGTH_LONG).show()
-                                        startActivity(intent)
-                                        finish()
+                                        val userInfo = UserInfo(newEmail, nickname, uid, "0")
+                                        FirebaseRef.userInfo.child(uid).setValue(userInfo)
+                                            .addOnSuccessListener {
+                                                Toast.makeText(this@SignuppageActivity, "회원가입 성공", Toast.LENGTH_LONG).show()
+                                                startActivity(intent)
+                                                finish()
+                                            }
+                                            .addOnFailureListener {
+                                                Toast.makeText(this@SignuppageActivity, "회원가입에 실패했습니다. 다시 시도해주세요.", Toast.LENGTH_LONG).show()
+                                                Log.e("SignuppageActivity", "Failed to write user info", it)
+                                            }
                                     }
                                 }
 
@@ -77,6 +88,7 @@ class SignuppageActivity : AppCompatActivity() {
                             })
                         } else {
                             Toast.makeText(this@SignuppageActivity, "회원가입에 실패했습니다. 다시 시도해주세요.", Toast.LENGTH_LONG).show()
+                            Log.e("SignuppageActivity", "Authentication failed", task.exception)
                         }
                     }
             }

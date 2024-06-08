@@ -18,21 +18,32 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class CropdiarypageActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivityCropdiarypageBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityCropdiarypageBinding.inflate(layoutInflater)
+
+        //엑티비티 바인딩
+        binding = ActivityCropdiarypageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Firebase 인증 및 데이터베이스 참조
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        auth = FirebaseAuth.getInstance()
+        val currentuser = auth.currentUser
+        val uid = currentuser?.uid.toString()
+
+        // Firebase 인증 및 데이터베이스 참조: cropInfo-uid 아래 있는 정보들
         val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("cropInfo")
             .child(uid)
+
+        // cropList에 Cropinfo형태의 리스트를 저장 및 어뎁터 형성.
         val cropList = ArrayList<Cropinfo>()
         val adapter = Adapter(this, cropList)
         binding.cropDiaryListview.adapter = adapter
 
-        // 작물 정보를 Firebase Realtime Database에서 가져오기
+        // 작물 정보를 Firebase Realtime Database에서 가져와서 listview에 추가
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 cropList.clear() // 리스트 초기화
