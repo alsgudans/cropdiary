@@ -12,6 +12,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.Cropdiary_Utils.DiaryAdapter
 import com.example.mycrodiary.Database_Utils.InputDataInfo
@@ -105,6 +106,20 @@ class DailydiaryActivity : AppCompatActivity() {
             intent.putExtra("date", date)
             startActivity(intent)
             finish()
+        }
+
+        binding.LEDSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                // 스위치가 켜진 경우
+                Toast.makeText(this, "LED가 켜졌습니다.", Toast.LENGTH_SHORT).show()
+                // Firebase에 상태 저장 및 동작 수행
+                databaseReference0.child("ledControl").setValue(1)
+            } else {
+                // 스위치가 꺼진 경우
+                Toast.makeText(this, "LED가 꺼졌습니다.", Toast.LENGTH_SHORT).show()
+                // Firebase에 상태 저장 및 동작 수행
+                databaseReference0.child("ledControl").setValue(0)
+            }
         }
     }
 }

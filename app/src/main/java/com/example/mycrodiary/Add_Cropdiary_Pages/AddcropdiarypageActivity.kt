@@ -1,8 +1,10 @@
 package com.example.mycrodiary.Add_Cropdiary_Pages
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.R
 import com.example.mycrodiary.Database_Utils.FirebaseRef
@@ -33,6 +35,7 @@ class AddcropdiarypageActivity : AppCompatActivity() {
         }
 
         binding.addCropButton.setOnClickListener {
+
             val newCropName = binding.selectCrop.selectedItem.toString()
             val newAddDate = binding.newAddDate.text.toString()
             val newCropNickname = binding.newCropNickname.text.toString()
@@ -44,6 +47,12 @@ class AddcropdiarypageActivity : AppCompatActivity() {
                 val takeCropinfo = Cropinfo(newCropName, newCropNickname, newAddDate) // 닉네임 대신 UID 사용
                 FirebaseRef.cropInfo.child(uid).child(newCropNickname).setValue(takeCropinfo)
             }
+
+            Toast.makeText(this, "작물이 추가되었습니다.", Toast.LENGTH_SHORT).show()
+
+            finish()
+
+
         }
     }
 
