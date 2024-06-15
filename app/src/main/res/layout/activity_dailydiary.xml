@@ -76,6 +76,12 @@
             android:text="일지 추가"/>
 
 
+        <Switch
+            android:id="@+id/LED_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LED 스위치" />
+
         <ListView
             android:id="@+id/added_diary_list"
             android:layout_width="match_parent"

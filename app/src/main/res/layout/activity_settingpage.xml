@@ -32,7 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5dp"
+        >
 
         <android.widget.Button
             android:id="@+id/password_change"
@@ -41,7 +42,7 @@
             android:layout_marginTop="10dp"
             android:text="비밀번호 변경"
             android:textSize="25dp"
-            android:background="@color/white"/>
+            android:background="@color/button_color1"/>
 
         <android.widget.Button
             android:id="@+id/nickname_change"
@@ -50,18 +51,7 @@
             android:layout_marginTop="10dp"
             android:text="닉네임 변경"
             android:textSize="25dp"
-            android:background="@color/white"
-            />
-
-        <android.widget.Button
-            android:id="@+id/update_information"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="업데이트 설정"
-            android:textSize="25dp"
-            android:background="@color/white"
-            />
+            android:background="@color/button_color1"/>
 
     </LinearLayout>
 

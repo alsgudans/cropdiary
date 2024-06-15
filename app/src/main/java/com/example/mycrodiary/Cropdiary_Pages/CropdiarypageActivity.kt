@@ -66,7 +66,6 @@ class CropdiarypageActivity : AppCompatActivity() {
 
         binding.addDiaryBtn.setOnClickListener(){
             val intent = Intent(this, AddcropdiarypageActivity::class.java)
-
             startActivity(intent)
         }
 

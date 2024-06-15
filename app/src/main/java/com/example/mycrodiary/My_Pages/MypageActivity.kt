@@ -1,9 +1,12 @@
 package com.example.mycrodiary.My_Pages
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mycrodiary.Account_Pages.LoginpageActivity
 import com.example.mycrodiary.databinding.ActivityMypageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -46,5 +49,27 @@ class MypageActivity : AppCompatActivity() {
                 }
             })
         }
+
+        binding.logout.setOnClickListener {
+            logout()
+        }
+    }
+
+    private fun logout() {
+        auth.signOut()
+
+        // 로그인 정보 삭제
+        val sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            remove("email")
+            remove("password")
+            apply()
+        }
+
+        Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, LoginpageActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }

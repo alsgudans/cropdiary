@@ -68,6 +68,8 @@ class DiarypageActivity : AppCompatActivity() {
 
         // 업로드 버튼 클릭 리스너
         binding.uploadBtn.setOnClickListener {
+
+
             val selecteddayText = binding.daySpinner.selectedItem.toString()
             val flowText = flowTextView.text.toString().toDouble()
             val temperatureText = temperatureTextView.text.toString().toDouble()

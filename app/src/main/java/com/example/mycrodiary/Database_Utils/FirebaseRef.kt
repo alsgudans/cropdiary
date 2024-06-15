@@ -10,5 +10,6 @@ class FirebaseRef {
         val userInfo = database.getReference("userInfo")
         val cropInfo = database.getReference("cropInfo")
         val getsensorInfo = database.getReference("sensor")
+        val treeInfo = database.getReference("treeInfo")
     }
 }
