@@ -23,7 +23,7 @@ class CropdiaryinfopageActivity : AppCompatActivity() {
         val uid = currentUser?.uid.toString()
 
         // Intent로 전달된 데이터 받기
-        val day = intent.getStringExtra("day")
+        val day = intent.getStringExtra("day").toString()
         val nickname = intent.getStringExtra("nickname").toString()
 
         // 데이터베이스 참조 설정
@@ -31,12 +31,12 @@ class CropdiaryinfopageActivity : AppCompatActivity() {
             .getReference("cropInfo")
             .child(uid)
             .child(nickname)
-            .child(day ?: "")
+            .child(day)
 
         // 데이터베이스에서 데이터 불러오기
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val day = dataSnapshot.child("day").getValue(String::class.java)
+                val day = dataSnapshot.child("day").getValue(String::class.java).toString()
                 val weight = dataSnapshot.child("weight").getValue(Double::class.java) ?: 0.0
                 val temperature = dataSnapshot.child("temperature").getValue(Double::class.java) ?: 0.0
                 val humidity = dataSnapshot.child("humidity").getValue(Double::class.java) ?: 0.0
@@ -52,10 +52,10 @@ class CropdiaryinfopageActivity : AppCompatActivity() {
                 binding.temperature.text = "${temperature}C"
                 binding.humidity.text = "${humidity}%"
                 binding.illumination.text = "${illumination}lux"
-                binding.leafStatus.text = "$group1"
-                binding.flowerStatus.text = "$group2"
-                binding.bugStatus.text = "$group3"
-                binding.fruitStatus.text = "$group4"
+                binding.leafStatus.text = "${group1}"
+                binding.flowerStatus.text = "${group2}"
+                binding.bugStatus.text = "${group3}"
+                binding.fruitStatus.text = "${group4}"
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
