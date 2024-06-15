@@ -62,27 +62,31 @@
                     >
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
-                        android:background="@color/button_color1" />
+                        android:background="@color/button_color1"
+                        android:layout_weight="1"/>
 
 
 
@@ -102,31 +106,28 @@
 
                         <RadioButton
                             android:id="@+id/leaf1"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="37.5dp"/>
+                            android:layout_weight="1"
+                            android:layout_gravity="center"/>
 
                         <RadioButton
                             android:id="@+id/leaf2"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="32.5dp"/>
+                            android:layout_weight="1"/>
 
                         <RadioButton
                             android:id="@+id/leaf3"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="32.5dp"/>
+                            android:layout_weight="1"/>
 
                         <RadioButton
                             android:id="@+id/leaf4"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginLeft="32.5dp"
-                            />
+                            android:layout_weight="1"/>
 
                     </RadioGroup>
 
@@ -156,27 +157,31 @@
                     >
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
-                        android:background="@color/button_color1" />
+                        android:background="@color/button_color1"
+                        android:layout_weight="1"/>
 
 
 
@@ -196,31 +201,28 @@
 
                         <RadioButton
                             android:id="@+id/flower1"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="37.5dp"/>
+                            android:layout_weight="1"
+                            android:layout_gravity="center"/>
 
                         <RadioButton
                             android:id="@+id/flower2"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="32.5dp"/>
+                            android:layout_weight="1"/>
 
                         <RadioButton
                             android:id="@+id/flower3"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="32.5dp"/>
+                            android:layout_weight="1"/>
 
                         <RadioButton
                             android:id="@+id/flower4"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginLeft="32.5dp"
-                            />
+                            android:layout_weight="1"/>
 
                     </RadioGroup>
 
@@ -250,27 +252,31 @@
                     >
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
-                        android:background="@color/button_color1" />
+                        android:background="@color/button_color1"
+                        android:layout_weight="1"/>
 
 
 
@@ -290,31 +296,28 @@
 
                         <RadioButton
                             android:id="@+id/bug1"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="37.5dp"/>
+                            android:layout_weight="1"
+                            android:layout_gravity="center"/>
 
                         <RadioButton
                             android:id="@+id/bug2"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="32.5dp"/>
+                            android:layout_weight="1"/>
 
                         <RadioButton
                             android:id="@+id/bug3"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="32.5dp"/>
+                            android:layout_weight="1"/>
 
                         <RadioButton
                             android:id="@+id/bug4"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginLeft="32.5dp"
-                            />
+                            android:layout_weight="1"/>
 
                     </RadioGroup>
 
@@ -344,27 +347,31 @@
                     >
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
                         android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"/>
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"/>
 
                     <ImageView
-                        android:layout_width="95dp"
+                        android:layout_width="match_parent"
                         android:layout_height="95dp"
-                        android:background="@color/button_color1" />
+                        android:background="@color/button_color1"
+                        android:layout_weight="1"/>
 
 
 
@@ -384,31 +391,28 @@
 
                         <RadioButton
                             android:id="@+id/plant1"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="37.5dp"/>
+                            android:layout_weight="1"
+                            android:layout_gravity="center"/>
 
                         <RadioButton
                             android:id="@+id/plant2"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="32.5dp"/>
+                            android:layout_weight="1"/>
 
                         <RadioButton
                             android:id="@+id/plant3"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginRight="37.5dp"
-                            android:layout_marginLeft="32.5dp"/>
+                            android:layout_weight="1"/>
 
                         <RadioButton
                             android:id="@+id/plant4"
-                            android:layout_width="30dp"
+                            android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_marginLeft="32.5dp"
-                            />
+                            android:layout_weight="1"/>
 
                     </RadioGroup>
 
