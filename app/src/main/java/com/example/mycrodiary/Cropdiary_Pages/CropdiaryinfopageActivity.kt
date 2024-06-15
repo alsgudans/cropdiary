@@ -37,10 +37,10 @@ class CropdiaryinfopageActivity : AppCompatActivity() {
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val day = dataSnapshot.child("day").getValue(String::class.java).toString()
-                val weight = dataSnapshot.child("weight").getValue(Double::class.java) ?: 0.0
-                val temperature = dataSnapshot.child("temperature").getValue(Double::class.java) ?: 0.0
-                val humidity = dataSnapshot.child("humidity").getValue(Double::class.java) ?: 0.0
-                val illumination = dataSnapshot.child("illumination").getValue(Double::class.java) ?: 0.0
+                val weight = dataSnapshot.child("weight").getValue(String::class.java)
+                val temperature = dataSnapshot.child("temperature").getValue(String::class.java)
+                val humidity = dataSnapshot.child("humidity").getValue(String::class.java)
+                val illumination = dataSnapshot.child("illumination").getValue(String::class.java)
                 val group1 = dataSnapshot.child("group1").getValue(Int::class.java) ?: 0
                 val group2 = dataSnapshot.child("group2").getValue(Int::class.java) ?: 0
                 val group3 = dataSnapshot.child("group3").getValue(Int::class.java) ?: 0
@@ -48,10 +48,10 @@ class CropdiaryinfopageActivity : AppCompatActivity() {
 
                 // 텍스트뷰에 데이터 설정
                 binding.day.text = "${day} day"
-                binding.flow.text = "${weight}kg"
-                binding.temperature.text = "${temperature}C"
-                binding.humidity.text = "${humidity}%"
-                binding.illumination.text = "${illumination}lux"
+                binding.flow.text = weight
+                binding.temperature.text = temperature
+                binding.humidity.text = humidity
+                binding.illumination.text = illumination
                 binding.leafStatus.text = "${group1}"
                 binding.flowerStatus.text = "${group2}"
                 binding.bugStatus.text = "${group3}"

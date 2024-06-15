@@ -99,10 +99,10 @@ class DiarypageActivity : AppCompatActivity() {
                 group2 = flowerStatus,
                 group3 = bugStatus,
                 group4 = plantStatus,
-                weight = "${flowText}kg",
-                temperature = "${temperatureText}C",
-                humidity = "${humidityText}%",
-                illumination = "${illuminationText}lux"
+                weight = flowText,
+                temperature = temperatureText,
+                humidity = humidityText,
+                illumination = illuminationText
             )
             buttonDataRef.setValue(newData)
             motorcontrol0.setValue(0)

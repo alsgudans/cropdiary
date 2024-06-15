@@ -71,7 +71,7 @@ class DailydiaryActivity : AppCompatActivity() {
 
                     if (day != null && weight != null && temperature != null && humidity != null && illumination != null) {
                         val inputInfo = InputDataInfo(
-                            day = "${day} day",
+                            day = day,
                             weight = weight,
                             temperature = temperature,
                             humidity = humidity,
