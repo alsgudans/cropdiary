@@ -1,11 +1,3 @@
-// 선택한 작물에 대한 정보를 보여주고, 작성한 일지를 listview로 저장된다.
-// upload버튼을 누르면 Diarypage로 넘어가 해당 작물에 대한 일지를 작성할 수 있음.
-
-/*
-작업 필요 목록
-1. listview의 item에 데이터 베이스의 데이터를 받아와 저장한다.
-*/
-
 package com.example.mycrodiary.Cropdiary_Pages
 
 import android.content.Intent
@@ -19,10 +11,7 @@ import com.example.mycrodiary.Database_Utils.InputDataInfo
 import com.example.mycrodiary.R
 import com.example.mycrodiary.databinding.ActivityDailydiaryBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 
 class DailydiaryActivity : AppCompatActivity() {
 
@@ -46,18 +35,17 @@ class DailydiaryActivity : AppCompatActivity() {
         val nickname = intent.getStringExtra("nickname").toString()
         val date = intent.getStringExtra("date")
 
-        // 각 변수에 Dailydiary엑티비티의 텍스트뷰를 지정.
+        // 각 변수에 Dailydiary엑티비티의 텍스트뷰를 지정
         val cropNameTextView = findViewById<TextView>(R.id.crop_name)
         val nicknameTextView = findViewById<TextView>(R.id.crop_nickname)
         val dateTextView = findViewById<TextView>(R.id.add_date)
 
-        // 지정된 Dailydiary엑티비티의 텍스트뷰에, Cropdiarypage엑티비티의 item에서 가져온 텍스트를 저장.
+        // 지정된 Dailydiary엑티비티의 텍스트뷰에, Cropdiarypage엑티비티의 item에서 가져온 텍스트를 저장
         cropNameTextView.text = cropName
         nicknameTextView.text = nickname
         dateTextView.text = date
 
-
-        //Firebase 인증 및 데이터베이스 참조: cropInfo-uid-nickname 아래 있는 정보들
+        // Firebase 인증 및 데이터베이스 참조: cropInfo-uid-nickname 아래 있는 정보들
         val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("cropInfo")
             .child(uid)
@@ -74,14 +62,24 @@ class DailydiaryActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 addedDiaryList.clear() // 리스트 초기화
                 for (snapshot in dataSnapshot.children) {
-                    val addday = snapshot.child("day").getValue(String::class.java)
+                    val day = snapshot.child("day").getValue(String::class.java)
                     val weight = snapshot.child("weight").getValue(Double::class.java)
                     val temperature = snapshot.child("temperature").getValue(Double::class.java)
                     val humidity = snapshot.child("humidity").getValue(Double::class.java)
                     val illumination = snapshot.child("illumination").getValue(Double::class.java)
 
-                    if (addday != null && weight != null && temperature != null && humidity != null && illumination != null) {
-                        val inputInfo = InputDataInfo(addday, weight, temperature, humidity, illumination)
+                    if (day != null && weight != null && temperature != null && humidity != null && illumination != null) {
+                        val inputInfo = InputDataInfo(
+                            day = day, // day 값을 포함
+                            group1 = null,
+                            group2 = null,
+                            group3 = null,
+                            group4 = null,
+                            weight = weight,
+                            temperature = temperature,
+                            humidity = humidity,
+                            illumination = illumination
+                        )
                         addedDiaryList.add(inputInfo)
                     } else {
                         Log.d("Data Check", "Some values are null, skipping this entry.")
@@ -95,12 +93,11 @@ class DailydiaryActivity : AppCompatActivity() {
             }
         })
 
-        binding.addDiaryBtn.setOnClickListener(){
-
+        binding.addDiaryBtn.setOnClickListener {
             val addbtnDataRef = databaseReference0.child("motorControl")
             addbtnDataRef.setValue(1)
 
-            val intent = Intent(this,DiarypageActivity::class.java)
+            val intent = Intent(this, DiarypageActivity::class.java)
             intent.putExtra("cropname", cropName)
             intent.putExtra("nickname", nickname)
             intent.putExtra("date", date)
