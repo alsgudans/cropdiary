@@ -1,9 +1,11 @@
 package com.example.mycrodiary.Cropdiary_Pages
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.Database_Utils.InputDataInfo
 import com.example.mycrodiary.Database_Utils.SensorDataInfo
@@ -68,8 +70,6 @@ class DiarypageActivity : AppCompatActivity() {
 
         // 업로드 버튼 클릭 리스너
         binding.uploadBtn.setOnClickListener {
-
-
             val selecteddayText = binding.daySpinner.selectedItem.toString()
             val flowText = flowTextView.text.toString().toDouble()
             val temperatureText = temperatureTextView.text.toString().toDouble()
@@ -82,7 +82,17 @@ class DiarypageActivity : AppCompatActivity() {
             val pluspoint = databaseReference.child("userInfo").child(uid).child("point")
 
             // 센서 데이터 저장
-            val newData = InputDataInfo(selecteddayText, flowText, temperatureText, humidityText, illuminationText)
+            val newData = InputDataInfo(
+                day = selecteddayText,
+                group1 = getRadioGroupValue(binding.leafgroup),
+                group2 = getRadioGroupValue(binding.flowergroup),
+                group3 = getRadioGroupValue(binding.buggroup),
+                group4 = getRadioGroupValue(binding.plantgroup),
+                weight = flowText,
+                temperature = temperatureText,
+                humidity = humidityText,
+                illumination = illuminationText
+            )
             buttonDataRef.setValue(newData)
             motorcontrol0.setValue(0)
 
@@ -101,5 +111,37 @@ class DiarypageActivity : AppCompatActivity() {
 
             finish()
         }
+
+        // 라디오 그룹 리스너 설정
+        setRadioGroupListener(binding.leafgroup, "leaf_status", uid)
+        setRadioGroupListener(binding.flowergroup, "flower_status", uid)
+        setRadioGroupListener(binding.buggroup, "bug_status", uid)
+        setRadioGroupListener(binding.plantgroup, "plant_status", uid)
+    }
+
+    private fun setRadioGroupListener(radioGroup: RadioGroup, fieldName: String, uid: String) {
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            val radioButton = findViewById<RadioButton>(checkedId)
+            val selectedValue = radioButton.tag.toString().toInt()
+            saveRadioSelectionToFirebase(uid, fieldName, selectedValue)
+        }
+    }
+
+    private fun saveRadioSelectionToFirebase(uid: String, fieldName: String, value: Int) {
+        val userRef = databaseReference.child("userInfo").child(uid)
+        userRef.child(fieldName).setValue(value).addOnCompleteListener {
+            if (it.isSuccessful) {
+                Toast.makeText(this, "$fieldName has been updated to $value", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Failed to update $fieldName", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun getRadioGroupValue(radioGroup: RadioGroup): Int {
+        val selectedId = radioGroup.checkedRadioButtonId
+        if (selectedId == -1) return 0 // 기본값으로 0 반환
+        val radioButton = findViewById<RadioButton>(selectedId)
+        return radioButton.tag.toString().toInt()
     }
 }
