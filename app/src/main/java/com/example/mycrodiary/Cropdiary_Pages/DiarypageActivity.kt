@@ -131,9 +131,9 @@ class DiarypageActivity : AppCompatActivity() {
         val userRef = databaseReference.child("userInfo").child(uid)
         userRef.child(fieldName).setValue(value).addOnCompleteListener {
             if (it.isSuccessful) {
-                Toast.makeText(this, "$fieldName has been updated to $value", Toast.LENGTH_SHORT).show()
+
             } else {
-                Toast.makeText(this, "Failed to update $fieldName", Toast.LENGTH_SHORT).show()
+
             }
         }
     }
