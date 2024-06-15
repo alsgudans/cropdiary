@@ -41,8 +41,6 @@ class DiarypageActivity : AppCompatActivity() {
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, selectdayData)
         binding.daySpinner.adapter = spinnerAdapter
 
-
-
         // 데이터베이스 참조 설정
         databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").reference
         val btndatabaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
@@ -75,7 +73,6 @@ class DiarypageActivity : AppCompatActivity() {
 
         // 닉네임 받아오기
 
-
         // 업로드 버튼 클릭 리스너
         binding.uploadBtn.setOnClickListener {
             val selecteddayText = binding.daySpinner.selectedItem.toString()
@@ -89,13 +86,19 @@ class DiarypageActivity : AppCompatActivity() {
             val motorcontrol0 = databaseReference.child("motorControl")
             val pluspoint = databaseReference.child("userInfo").child(uid).child("point")
 
+            // 라디오 버튼 선택 값 가져오기
+            val leafStatus = getRadioGroupValue(binding.leafgroup)
+            val flowerStatus = getRadioGroupValue(binding.flowergroup)
+            val bugStatus = getRadioGroupValue(binding.buggroup)
+            val plantStatus = getRadioGroupValue(binding.plantgroup)
+
             // 센서 데이터 저장
             val newData = InputDataInfo(
                 day = selecteddayText,
-                group1 = getRadioGroupValue(binding.leafgroup),
-                group2 = getRadioGroupValue(binding.flowergroup),
-                group3 = getRadioGroupValue(binding.buggroup),
-                group4 = getRadioGroupValue(binding.plantgroup),
+                group1 = leafStatus,
+                group2 = flowerStatus,
+                group3 = bugStatus,
+                group4 = plantStatus,
                 weight = "${flowText}kg",
                 temperature = "${temperatureText}C",
                 humidity = "${humidityText}%",
@@ -118,31 +121,6 @@ class DiarypageActivity : AppCompatActivity() {
             })
 
             finish()
-        }
-
-        // 라디오 그룹 리스너 설정
-        setRadioGroupListener(binding.leafgroup, "leaf_status", uid)
-        setRadioGroupListener(binding.flowergroup, "flower_status", uid)
-        setRadioGroupListener(binding.buggroup, "bug_status", uid)
-        setRadioGroupListener(binding.plantgroup, "plant_status", uid)
-    }
-
-    private fun setRadioGroupListener(radioGroup: RadioGroup, fieldName: String, uid: String) {
-        radioGroup.setOnCheckedChangeListener { _, checkedId ->
-            val radioButton = findViewById<RadioButton>(checkedId)
-            val selectedValue = radioButton.tag.toString().toInt()
-            saveRadioSelectionToFirebase(uid, fieldName, selectedValue)
-        }
-    }
-
-    private fun saveRadioSelectionToFirebase(uid: String, fieldName: String, value: Int) {
-        val userRef = databaseReference.child("cropInfo").child(uid)
-        userRef.child(fieldName).setValue(value).addOnCompleteListener {
-            if (it.isSuccessful) {
-
-            } else {
-
-            }
         }
     }
 
