@@ -109,25 +109,29 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:tag="11"/>
 
                         <RadioButton
                             android:id="@+id/leaf2"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="12"/>
 
                         <RadioButton
                             android:id="@+id/leaf3"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="13"/>
 
                         <RadioButton
                             android:id="@+id/leaf4"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="14"/>
 
                     </RadioGroup>
 
@@ -204,25 +208,29 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:tag="21"/>
 
                         <RadioButton
                             android:id="@+id/flower2"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="22"/>
 
                         <RadioButton
                             android:id="@+id/flower3"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="23"/>
 
                         <RadioButton
                             android:id="@+id/flower4"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="24"/>
 
                     </RadioGroup>
 
@@ -299,25 +307,29 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:tag="31"/>
 
                         <RadioButton
                             android:id="@+id/bug2"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="32"/>
 
                         <RadioButton
                             android:id="@+id/bug3"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="33"/>
 
                         <RadioButton
                             android:id="@+id/bug4"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="34"/>
 
                     </RadioGroup>
 
@@ -394,25 +406,29 @@
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
                             android:layout_weight="1"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:tag="41"/>
 
                         <RadioButton
                             android:id="@+id/plant2"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="42"/>
 
                         <RadioButton
                             android:id="@+id/plant3"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="43"/>
 
                         <RadioButton
                             android:id="@+id/plant4"
                             android:layout_width="match_parent"
                             android:layout_height="30dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:tag="44"/>
 
                     </RadioGroup>
 
