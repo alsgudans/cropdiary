@@ -3,6 +3,7 @@ package com.example.mycrodiary.Cropdiary_Pages
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.AdapterView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -70,11 +71,7 @@ class DailydiaryActivity : AppCompatActivity() {
 
                     if (day != null && weight != null && temperature != null && humidity != null && illumination != null) {
                         val inputInfo = InputDataInfo(
-                            day = day, // day 값을 포함
-                            group1 = null,
-                            group2 = null,
-                            group3 = null,
-                            group4 = null,
+                            day = day,
                             weight = weight,
                             temperature = temperature,
                             humidity = humidity,
@@ -92,6 +89,14 @@ class DailydiaryActivity : AppCompatActivity() {
                 Log.d("error count","Data upload Error")
             }
         })
+
+        // 리스트뷰 아이템 클릭 리스너 설정
+        binding.addedDiaryList.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            val selectedItem = addedDiaryList[position]
+            val intent = Intent(this, CropdiaryinfopageActivity::class.java)
+            intent.putExtra("day", selectedItem.day) // day 값만 전달
+            startActivity(intent)
+        }
 
         binding.addDiaryBtn.setOnClickListener {
             val addbtnDataRef = databaseReference0.child("motorControl")
