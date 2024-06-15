@@ -31,7 +31,9 @@
     <ScrollView
         android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,44 +44,91 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1. 식물의 잎 상태는 어떤가요?"
+                    android:text="1. 식물의 잎 상태가 어떤가요?"
                     android:textSize="15dp"
                     />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="5dp"
                     >
 
-                    <android.widget.ImageButton
-                        android:id="@+id/crop1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/crop2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/crop3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/crop4"
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:id="@+id/leafgroup"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/leaf1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="37.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/leaf2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="32.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/leaf3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="32.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/leaf4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="32.5dp"
+                            />
+
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -89,7 +138,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -100,33 +149,80 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="5dp"
                     >
 
-                    <android.widget.ImageButton
-                        android:id="@+id/flower1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/flower2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/flower3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/flower4"
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:id="@+id/flowergroup"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/flower1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="37.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/flower2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="32.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/flower3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="32.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/flower4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="32.5dp"
+                            />
+
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -136,7 +232,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -147,33 +243,80 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="5dp"
                     >
 
-                    <android.widget.ImageButton
-                        android:id="@+id/bug1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/bug2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/bug3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:id="@+id/bug4"
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:id="@+id/buggroup"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/bug1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="37.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/bug2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="32.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/bug3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="32.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/bug4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="32.5dp"
+                            />
+
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -183,7 +326,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="5dp">
+                >
 
                 <TextView
                     android:layout_width="match_parent"
@@ -194,34 +337,87 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="5dp"
                     >
 
-                    <android.widget.ImageButton
-                        android:id="@+id/plant1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1"
+                        android:layout_marginRight="5dp"/>
 
-                    <android.widget.ImageButton
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:background="@color/button_color1" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:id="@+id/plantgroup"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/plant1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="37.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/plant2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="32.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/plant3"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="37.5dp"
+                            android:layout_marginLeft="32.5dp"/>
+
+                        <RadioButton
+                            android:id="@+id/plant4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="32.5dp"
+                            />
+
+                    </RadioGroup>
 
                 </LinearLayout>
 
             </LinearLayout>
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"

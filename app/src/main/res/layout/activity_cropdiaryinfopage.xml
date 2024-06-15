@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="18dp"
-            android:text="Mycrop info monitoring"
+            android:text="나의 일지"
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -32,65 +32,151 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1. 식물의 잎 상태는 어떤가요?"
-            android:textSize="15dp"
+            android:textSize="20dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="상태"
-            android:textSize="15dp"
-            />
-
-        />
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1. 식물의 잎 상태는 어떤가요?"
-            android:textSize="15dp"
+            android:text="2. 꽃의 상태가 어떤가요?"
+            android:textSize="20dp"
+            />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="상태"
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3. 병충해의 피해는 없나요?"
+            android:textSize="20dp"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="상태"
-            android:textSize="15dp"
-            />
+            android:textSize="20dp" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1. 식물의 잎 상태는 어떤가요?"
-            android:textSize="15dp"
-            />
+            android:text="4. 열매의 상태는 어떤가요?"
+            android:textSize="20dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="상태"
-            android:textSize="15dp"
-            />
+            android:textSize="20dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="1. 식물의 잎 상태는 어떤가요?"
-            android:textSize="15dp"
-            /><TextView
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="상태"
-        android:textSize="15dp"
-        />
+        android:orientation="horizontal"
+        android:gravity="center">
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="희석액   공급량: "
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="온                  도: "
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text= "습                  도: "
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text= "조                  도: "
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="작                  일: "/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/flow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="희석액 공급량"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="온도"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text= "습도"
+                android:textSize="20dp"/>
+
+
+            <TextView
+                android:id="@+id/illumination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text= "조도"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text ="날짜"
+                android:textSize="20dp"/>
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
+
 
 
 </LinearLayout>
