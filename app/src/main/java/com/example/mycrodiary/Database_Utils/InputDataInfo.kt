@@ -6,8 +6,8 @@ data class InputDataInfo(
     val group2: Int? = null,
     val group3: Int? = null,
     val group4: Int? = null,
-    val weight: Double? = 0.0,
-    val humidity: Double? = 0.0,
-    val illumination: Double? = 0.0,
-    val temperature: Double? = 0.0
+    val weight: String? = "",
+    val humidity: String? = "",
+    val illumination: String? = "",
+    val temperature: String? = ""
 )

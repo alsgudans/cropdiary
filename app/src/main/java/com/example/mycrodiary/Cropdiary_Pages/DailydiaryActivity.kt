@@ -64,14 +64,14 @@ class DailydiaryActivity : AppCompatActivity() {
                 addedDiaryList.clear() // 리스트 초기화
                 for (snapshot in dataSnapshot.children) {
                     val day = snapshot.child("day").getValue(String::class.java)
-                    val weight = snapshot.child("weight").getValue(Double::class.java)
-                    val temperature = snapshot.child("temperature").getValue(Double::class.java)
-                    val humidity = snapshot.child("humidity").getValue(Double::class.java)
-                    val illumination = snapshot.child("illumination").getValue(Double::class.java)
+                    val weight = snapshot.child("weight").getValue(String::class.java)
+                    val temperature = snapshot.child("temperature").getValue(String::class.java)
+                    val humidity = snapshot.child("humidity").getValue(String::class.java)
+                    val illumination = snapshot.child("illumination").getValue(String::class.java)
 
                     if (day != null && weight != null && temperature != null && humidity != null && illumination != null) {
                         val inputInfo = InputDataInfo(
-                            day = day,
+                            day = "${day} day",
                             weight = weight,
                             temperature = temperature,
                             humidity = humidity,

@@ -24,11 +24,11 @@ class DiaryAdapter(val context: Context, private val diaryList: ArrayList<InputD
         val illuminationTextView = view.findViewById<TextView>(R.id.added_illumination)
 
         // 해당 TextView에 데이터 설정
-        dayTextView.text = diary.day
-        flowTextView.text = "${diary.weight} kg"
-        temperatureTextView.text = "${diary.temperature} ℃"
-        humidityTextView.text = "${diary.humidity} %"
-        illuminationTextView.text = "${diary.illumination} lux"
+        dayTextView.text = "${diary.day}"
+        flowTextView.text = "${diary.weight}"
+        temperatureTextView.text = "${diary.temperature}"
+        humidityTextView.text = "${diary.humidity}"
+        illuminationTextView.text = "${diary.illumination}"
 
         return view
     }

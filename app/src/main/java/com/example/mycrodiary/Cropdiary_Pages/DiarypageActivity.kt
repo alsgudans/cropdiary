@@ -34,13 +34,21 @@ class DiarypageActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         val uid = currentUser?.uid.toString()
 
+        nickname = intent.getStringExtra("nickname").toString()
+
         // 스피너 어댑터 설정
         val selectdayData = resources.getStringArray(R.array.day_array)
         val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, selectdayData)
         binding.daySpinner.adapter = spinnerAdapter
 
+
+
         // 데이터베이스 참조 설정
         databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").reference
+        val btndatabaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("cropInfo")
+            .child(uid)
+            .child(nickname)
 
         // 텍스트뷰 연결
         flowTextView = binding.flow
@@ -53,10 +61,10 @@ class DiarypageActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val sensorData = dataSnapshot.getValue(SensorDataInfo::class.java)
                 sensorData?.let {
-                    flowTextView.text = "${it.weight}"
-                    temperatureTextView.text = "${it.temperature}"
-                    humidityTextView.text = "${it.humidity}"
-                    illuminationTextView.text = "${it.illumination}"
+                    flowTextView.text = "${it.weight}kg"
+                    temperatureTextView.text = "${it.temperature}C"
+                    humidityTextView.text = "${it.humidity}%"
+                    illuminationTextView.text = "${it.illumination}lux"
                 }
             }
 
@@ -66,18 +74,18 @@ class DiarypageActivity : AppCompatActivity() {
         })
 
         // 닉네임 받아오기
-        nickname = intent.getStringExtra("nickname").toString()
+
 
         // 업로드 버튼 클릭 리스너
         binding.uploadBtn.setOnClickListener {
             val selecteddayText = binding.daySpinner.selectedItem.toString()
-            val flowText = flowTextView.text.toString().toDouble()
-            val temperatureText = temperatureTextView.text.toString().toDouble()
-            val humidityText = humidityTextView.text.toString().toDouble()
-            val illuminationText = illuminationTextView.text.toString().toDouble()
+            val flowText = flowTextView.text.toString()
+            val temperatureText = temperatureTextView.text.toString()
+            val humidityText = humidityTextView.text.toString()
+            val illuminationText = illuminationTextView.text.toString()
 
             // 데이터베이스 경로 설정
-            val buttonDataRef = databaseReference.child("cropInfo").child(uid).child(nickname).child(selecteddayText)
+            val buttonDataRef = btndatabaseReference.child(selecteddayText)
             val motorcontrol0 = databaseReference.child("motorControl")
             val pluspoint = databaseReference.child("userInfo").child(uid).child("point")
 
@@ -88,10 +96,10 @@ class DiarypageActivity : AppCompatActivity() {
                 group2 = getRadioGroupValue(binding.flowergroup),
                 group3 = getRadioGroupValue(binding.buggroup),
                 group4 = getRadioGroupValue(binding.plantgroup),
-                weight = flowText,
-                temperature = temperatureText,
-                humidity = humidityText,
-                illumination = illuminationText
+                weight = "${flowText}kg",
+                temperature = "${temperatureText}C",
+                humidity = "${humidityText}%",
+                illumination = "${illuminationText}lux"
             )
             buttonDataRef.setValue(newData)
             motorcontrol0.setValue(0)
@@ -128,7 +136,7 @@ class DiarypageActivity : AppCompatActivity() {
     }
 
     private fun saveRadioSelectionToFirebase(uid: String, fieldName: String, value: Int) {
-        val userRef = databaseReference.child("userInfo").child(uid)
+        val userRef = databaseReference.child("cropInfo").child(uid)
         userRef.child(fieldName).setValue(value).addOnCompleteListener {
             if (it.isSuccessful) {
 
