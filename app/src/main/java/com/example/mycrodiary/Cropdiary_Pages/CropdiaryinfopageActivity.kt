@@ -25,11 +25,13 @@ class CropdiaryinfopageActivity : AppCompatActivity() {
         // Intent로 전달된 데이터 받기
         val day = intent.getStringExtra("day")
 
+        val nickname = intent.getStringExtra("nickname").toString()
+
         // 데이터베이스 참조 설정
         databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .reference.child("cropInfo")
             .child(uid)
-            .child("test tomato")
+            .child(nickname)
             .child(day ?: "")
 
         // 데이터베이스에서 데이터 불러오기
@@ -46,15 +48,15 @@ class CropdiaryinfopageActivity : AppCompatActivity() {
                 val group4 = dataSnapshot.child("group4").getValue(Int::class.java) ?: 0
 
                 // 텍스트뷰에 데이터 설정
-                binding.day.text = "일지: $day"
-                binding.flow.text = "희석액 공급량: $weight"
-                binding.temperature.text = "온도: $temperature"
-                binding.humidity.text = "습도: $humidity"
-                binding.illumination.text = "조도: $illumination"
-                binding.leafStatus.text = "잎 상태: $group1"
-                binding.flowerStatus.text = "꽃 상태: $group2"
-                binding.bugStatus.text = "병충해 상태: $group3"
-                binding.fruitStatus.text = "열매 상태: $group4"
+                binding.day.text = "$day"
+                binding.flow.text = " $weight"
+                binding.temperature.text = "$temperature"
+                binding.humidity.text = "$humidity"
+                binding.illumination.text = "$illumination"
+                binding.leafStatus.text = "$group1"
+                binding.flowerStatus.text = "$group2"
+                binding.bugStatus.text = "$group3"
+                binding.fruitStatus.text = "$group4"
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

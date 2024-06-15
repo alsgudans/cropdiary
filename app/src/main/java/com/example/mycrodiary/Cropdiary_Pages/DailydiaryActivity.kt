@@ -95,6 +95,7 @@ class DailydiaryActivity : AppCompatActivity() {
             val selectedItem = addedDiaryList[position]
             val intent = Intent(this, CropdiaryinfopageActivity::class.java)
             intent.putExtra("day", selectedItem.day) // day 값만 전달
+            intent.putExtra("nickname", nickname)
             startActivity(intent)
         }
 

@@ -33,24 +33,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:padding="10dp">
 
         <TextView
-            android:id="@+id/leafStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="1. 식물의 잎 상태는 어떤가요?"
             android:textSize="20dp"/>
 
         <TextView
-            android:id="@+id/flowerStatus"
+            android:id="@+id/leafStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="상태"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/bugStatus"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2. 꽃의 상태가 어떤가요?"
@@ -58,7 +58,7 @@
             />
 
         <TextView
-            android:id="@+id/fruitStatus"
+            android:id="@+id/flowerStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="상태"
@@ -71,7 +71,9 @@
             android:text="3. 병충해의 피해는 없나요?"
             android:textSize="20dp"
             />
+
         <TextView
+            android:id="@+id/bugStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="상태"
@@ -85,6 +87,7 @@
             android:textSize="20dp" />
 
         <TextView
+            android:id="@+id/fruitStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="상태"
