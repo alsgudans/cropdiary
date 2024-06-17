@@ -36,8 +36,98 @@
         <ImageView
             android:id="@+id/treei"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="400dp"
             android:scaleType="centerInside"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="현재 포인트"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/now_point"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="포인트"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="물을 준 횟수"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/how_water"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="비료 준 횟수"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/how_fertilizer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="사랑 준 횟수"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/how_love"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="햇빛 준 횟수"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/how_sun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+
+
 
     </LinearLayout>
 
@@ -63,7 +153,7 @@
                     android:layout_height="95dp"
                     android:background="@color/black"
                     android:layout_marginRight="5dp"
-                    android:text="물 주기"
+                    android:text="물 주기\n100point"
                     android:textColor="@color/white"
                     />
 
@@ -73,7 +163,7 @@
                     android:layout_height="95dp"
                     android:background="@color/black"
                     android:layout_marginRight="5dp"
-                    android:text="비료 주기"
+                    android:text="비료 주기\n100point"
                     android:textColor="@color/white"
                     />
 
@@ -83,7 +173,7 @@
                     android:layout_height="95dp"
                     android:background="@color/black"
                     android:layout_marginRight="5dp"
-                    android:text="사랑 주기"
+                    android:text="사랑 주기\n100point"
                     android:textColor="@color/white"
                     />
 
@@ -93,61 +183,12 @@
                     android:layout_height="95dp"
                     android:background="@color/black"
                     android:layout_marginRight="5dp"
-                    android:text="햇빛 주기"
+                    android:text="햇빛 주기\n100point"
                     android:textColor="@color/white"
                     />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:padding="5dp">
-
-                <android.widget.Button
-                    android:id="@+id/apple"
-                    android:layout_width="95dp"
-                    android:layout_height="95dp"
-                    android:background="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:text="사과"
-                    android:textColor="@color/white"
-                    />
-
-                <android.widget.Button
-                    android:id="@+id/pear"
-                    android:layout_width="95dp"
-                    android:layout_height="95dp"
-                    android:background="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:text="배"
-                    android:textColor="@color/white"
-                    />
-
-                <android.widget.Button
-                    android:id="@+id/grape"
-                    android:layout_width="95dp"
-                    android:layout_height="95dp"
-                    android:background="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:text="포도"
-                    android:textColor="@color/white"
-                    />
-
-                <android.widget.Button
-                    android:id="@+id/mandarin"
-                    android:layout_width="95dp"
-                    android:layout_height="95dp"
-                    android:background="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:text="귤"
-                    android:textColor="@color/white"
-                    />
-
-
-            </LinearLayout>
 
 
 

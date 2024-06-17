@@ -49,93 +49,52 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1. 식물의 잎 상태가 어떤가요?"
+                    android:text="1. 식물의 잎이 어떤 상태인가요? \n (잎이 자라지 않았다면 넘어가세요.)"
                     android:textSize="15dp"
                     />
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/leafgroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="5dp"
+                    android:orientation="vertical"
                     >
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/leaf1"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="입의 갯수가 1장에서 2장이며, 잎이 타원형태이다."
+                        android:tag="11"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/leaf2"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="입의 갯수가 3장에서 4장이며, 잎이 톱니모양을 띈다."
+                        android:tag="12"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/leaf3"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="입의 갯수가 5장에서 6장이며, 잎이 진한 녹색빛을 띈다."
+                        android:tag="13"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/leaf4"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="입의 갯수가 7장 이상이며, 잎이 두껍고 넓어졌다."
+                        android:tag="14"/>
 
+                </RadioGroup>
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:id="@+id/leafgroup"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
-
-                        <RadioButton
-                            android:id="@+id/leaf1"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:tag="11"/>
-
-                        <RadioButton
-                            android:id="@+id/leaf2"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="12"/>
-
-                        <RadioButton
-                            android:id="@+id/leaf3"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="13"/>
-
-                        <RadioButton
-                            android:id="@+id/leaf4"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="14"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -143,98 +102,58 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="20dp"
                 >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2. 꽃의 상태가 어떤가요?"
+                    android:text="2. 꽃이 어떤 상태인가요? \n (꽃이 피지 않았다면 넘어가세요.)"
                     android:textSize="15dp"
                     />
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/flowergroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="5dp"
+                    android:orientation="vertical"
                     >
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/flower1"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="털에 쌓인 작은 봉오리가 잎의 겨드랑이, 줄기 끝에 생겼다."
+                        android:tag="21"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/flower2"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="노란 꽃이 피어났다."
+                        android:tag="22"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/flower3"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="꽃잎이 떨어지고, 자방이 발달했다."
+                        android:tag="23"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/flower4"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="꽃이 모두 떨어지고, 초록색 작은 열매가 생겼다."
+                        android:tag="24"/>
 
+                </RadioGroup>
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:id="@+id/flowergroup"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
-
-                        <RadioButton
-                            android:id="@+id/flower1"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:tag="21"/>
-
-                        <RadioButton
-                            android:id="@+id/flower2"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="22"/>
-
-                        <RadioButton
-                            android:id="@+id/flower3"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="23"/>
-
-                        <RadioButton
-                            android:id="@+id/flower4"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="24"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -242,98 +161,58 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="20dp"
                 >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3. 병충해의 피해는 없나요?"
+                    android:text="3. 열매가 어떤 상태인가요?\n(열매가 맺히지 않았다면 넘어가세요.)"
                     android:textSize="15dp"
                     />
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/plantgroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="5dp"
+                    android:orientation="vertical"
                     >
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/plant1"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="작고 단단한 녹색 열매가 열렸다."
+                        android:tag="31"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/plant2"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="여전히 녹색을 띄고 있지만, 이전에 비해 매우 커졌다."
+                        android:tag="32"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/plant3"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="노란색, 혹은 주황색 빛을 띄고 있다."
+                        android:tag="33"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/plant4"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="빨갛고, 물렁물렁하며, 살짝 건드려도 열매가 떨어진다."
+                        android:tag="34"/>
 
+                </RadioGroup>
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:id="@+id/buggroup"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
-
-                        <RadioButton
-                            android:id="@+id/bug1"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:tag="31"/>
-
-                        <RadioButton
-                            android:id="@+id/bug2"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="32"/>
-
-                        <RadioButton
-                            android:id="@+id/bug3"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="33"/>
-
-                        <RadioButton
-                            android:id="@+id/bug4"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="34"/>
-
-                    </RadioGroup>
-
-                </LinearLayout>
 
             </LinearLayout>
 
@@ -341,108 +220,99 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="20dp"
                 >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="4. 열매의 상태는 어떤가요?"
+                    android:text="4. 식물의 병충해 피해는 없나요?\n (아래에 해당하는 증상이 없다면 넘어가세요.)"
                     android:textSize="15dp"
                     />
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/buggroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:padding="5dp"
+                    android:orientation="vertical"
                     >
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/bug1"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:text="식물의 잎, 줄기, 열매에 회색 곰팡이가 피었다."
+                        android:tag="41"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/bug2"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="식물의 잎, 줄기, 열매에 갈색 반점이 생기고, 잎이 말랐다."
+                        android:tag="42"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/bug3"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="잎에 갈색 반점이 생기고, 점점 확대된다."
+                        android:tag="43"/>
 
-                    <ImageView
+                    <RadioButton
+                        android:id="@+id/bug4"
                         android:layout_width="match_parent"
-                        android:layout_height="95dp"
-                        android:background="@color/button_color1"
-                        android:layout_weight="1"/>
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="잎, 열매에 작은 검은 반점이 생기고, 열매가 부패했다."
+                        android:tag="44"/>
 
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:id="@+id/plantgroup"
+                    <RadioButton
+                        android:id="@+id/bug5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="잎이 시들고, 줄기 내부가 갈색으로 변했다."
+                        android:tag="45"/>
 
-                        <RadioButton
-                            android:id="@+id/plant1"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:layout_gravity="center"
-                            android:tag="41"/>
+                    <RadioButton
+                        android:id="@+id/bug6"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="잎이 노랗고 말랐으며, 식물의 성장이 비정상적으로 더디다."
+                        android:tag="46"/>
 
-                        <RadioButton
-                            android:id="@+id/plant2"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="42"/>
+                    <RadioButton
+                        android:id="@+id/bug7"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="잎이 노랗고, 불규칙한 모자이크 무늬가 띈다."
+                        android:tag="47"/>
 
-                        <RadioButton
-                            android:id="@+id/plant3"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="43"/>
+                    <RadioButton
+                        android:id="@+id/bug8"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:text="작은 벌래들이 다닥다닥 붙어있다."
+                        android:tag="48"/>
 
-                        <RadioButton
-                            android:id="@+id/plant4"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_weight="1"
-                            android:tag="44"/>
+                </RadioGroup>
 
-                    </RadioGroup>
-
-                </LinearLayout>
 
             </LinearLayout>
-
-
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -534,19 +404,12 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <Button
+                android:id="@+id/upload_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/upload_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="작성 완료"
-                    android:textSize="25dp"/>
-
-            </LinearLayout>
+                android:text="작성 완료"
+                android:textSize="25dp"/>
 
         </LinearLayout>
 

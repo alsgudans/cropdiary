@@ -13,11 +13,16 @@ import com.example.mycrodiary.R
 import com.example.mycrodiary.databinding.ActivityDailydiaryBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DailydiaryActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityDailydiaryBinding
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var lastAddDateRef: DatabaseReference
+    private var isButtonEnabled = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +52,13 @@ class DailydiaryActivity : AppCompatActivity() {
         dateTextView.text = date
 
         // Firebase 인증 및 데이터베이스 참조: cropInfo-uid-nickname 아래 있는 정보들
-        val databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+        databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("cropInfo")
             .child(uid)
             .child(nickname)
 
         val databaseReference0 = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").reference
+        lastAddDateRef = databaseReference.child("last_add_date")
 
         val addedDiaryList = ArrayList<InputDataInfo>()
         val adapter = DiaryAdapter(this, addedDiaryList)
@@ -99,16 +105,40 @@ class DailydiaryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.addDiaryBtn.setOnClickListener {
-            val addbtnDataRef = databaseReference0.child("motorControl")
-            addbtnDataRef.setValue(1)
+        // 마지막 일지 추가 날짜를 확인하여 버튼을 활성화/비활성화
+        lastAddDateRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lastDate = snapshot.getValue(String::class.java)
+                val currentDate = getCurrentDate()
 
-            val intent = Intent(this, DiarypageActivity::class.java)
-            intent.putExtra("cropname", cropName)
-            intent.putExtra("nickname", nickname)
-            intent.putExtra("date", date)
-            startActivity(intent)
-            finish()
+                isButtonEnabled = lastDate != currentDate
+                binding.addDiaryBtn.isEnabled = isButtonEnabled
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // 에러 처리
+                Log.d("Data Error", "Failed to read last add date", error.toException())
+            }
+        })
+
+        binding.addDiaryBtn.setOnClickListener {
+            if (isButtonEnabled) {
+                val addbtnDataRef = databaseReference0.child("motorControl")
+                addbtnDataRef.setValue(1)
+
+                // 현재 날짜를 가져와서 저장
+                val currentDate = getCurrentDate()
+                lastAddDateRef.setValue(currentDate)
+
+                val intent = Intent(this, DiarypageActivity::class.java)
+                intent.putExtra("cropname", cropName)
+                intent.putExtra("nickname", nickname)
+                intent.putExtra("date", date)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "하루에 한 번만 일지를 추가할 수 있습니다.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         binding.LEDSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -124,5 +154,11 @@ class DailydiaryActivity : AppCompatActivity() {
                 databaseReference0.child("ledControl").setValue(0)
             }
         }
+    }
+
+    // 현재 날짜를 "yyyy-MM-dd" 형식으로 반환
+    private fun getCurrentDate(): String {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        return dateFormat.format(Date())
     }
 }

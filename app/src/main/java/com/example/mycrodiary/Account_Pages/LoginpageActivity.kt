@@ -24,6 +24,7 @@ class LoginpageActivity : AppCompatActivity() {
 
         val move_signinpage = Intent(this, SignuppageActivity::class.java)
         val move_mainpage = Intent(this, MainpageActivity::class.java)
+        val move_searchpage = Intent(this, SearchpasswordActivity::class.java)
 
         // Check for saved login credentials
         val sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
@@ -80,6 +81,10 @@ class LoginpageActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        binding.serachId.setOnClickListener(){
+            startActivity(move_searchpage)
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.mycrodiary.Mytree_Pages
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.Database_Utils.FirebaseRef
@@ -9,6 +10,7 @@ import com.example.mycrodiary.databinding.ActivityMytreepageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class MytreepageActivity : AppCompatActivity() {
@@ -25,6 +27,46 @@ class MytreepageActivity : AppCompatActivity() {
         val currentuser = auth.currentUser
         val uid = currentuser?.uid.toString()
 
+        val treeinfoRef = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("treeInfo")
+            .child(uid)
+
+        val pointRef = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("userInfo")
+            .child(uid)
+
+        treeinfoRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val water = dataSnapshot.child("water").getValue(Int::class.java)
+                val sun = dataSnapshot.child("sun").getValue(Int::class.java)
+                val fertilizer = dataSnapshot.child("Fertilizer").getValue(Int::class.java)
+                val love = dataSnapshot.child("love").getValue(Int::class.java)
+                // 가져온 데이터 UI에 표시
+                binding.howWater.text = water.toString()
+                binding.howSun.text = sun.toString()
+                binding.howLove.text = love.toString()
+                binding.howFertilizer.text = fertilizer.toString()
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e("MypageActivity", "Failed to read user info", databaseError.toException())
+            }
+        })
+
+        pointRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val point = dataSnapshot.child("point").getValue(String::class.java)
+
+                // 가져온 데이터 UI에 표시
+                binding.nowPoint.text = point.toString()
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e("MypageActivity", "Failed to read user info", databaseError.toException())
+            }
+        })
+
         binding.water.setOnClickListener {
             decrementPointsAndIncrementValue(uid, "water")
         }
@@ -36,12 +78,6 @@ class MytreepageActivity : AppCompatActivity() {
         }
         binding.love.setOnClickListener {
             decrementPointsAndIncrementValue(uid, "love")
-        }
-        binding.apple.setOnClickListener(){
-            decrementPointsAndIncrementValue(uid,"apple")
-        }
-        binding.grape.setOnClickListener(){
-            decrementPointsAndIncrementValue(uid,"grape")
         }
 
 
