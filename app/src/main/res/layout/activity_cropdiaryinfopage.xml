@@ -8,13 +8,6 @@
     android:orientation="vertical"
     tools:context=".Cropdiary_Pages.CropdiaryinfopageActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main_color"
-        android:gravity="center"
-        >
-
         <TextView
             android:id="@+id/main_page"
             android:layout_width="wrap_content"
@@ -25,8 +18,6 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             />
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

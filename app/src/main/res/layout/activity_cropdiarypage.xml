@@ -8,29 +8,18 @@
     android:orientation="vertical"
     tools:context=".Cropdiary_Pages.CropdiarypageActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/main_page"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/main_color"
-        android:gravity="center"
-        >
+        android:padding="18dp"
+        android:text="나의 작물"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
 
-        <TextView
-            android:id="@+id/main_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:text="나의 작물"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-
-        <ListView
+    <ListView
             android:id="@+id/crop_diary_listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

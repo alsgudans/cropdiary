@@ -39,107 +39,48 @@ class DailydiaryActivity : AppCompatActivity() {
         // 각 변수에 Cropdiarypage엑티비티의 item에서 putextra한 텍스트를 저장
         val cropName = intent.getStringExtra("cropname")
         val nickname = intent.getStringExtra("nickname").toString()
-        val date = intent.getStringExtra("date")
+        val date = intent.getStringExtra("date").toString()
 
         // 각 변수에 Dailydiary엑티비티의 텍스트뷰를 지정
         val cropNameTextView = findViewById<TextView>(R.id.crop_name)
         val nicknameTextView = findViewById<TextView>(R.id.crop_nickname)
-        val dateTextView = findViewById<TextView>(R.id.add_date)
+        val dateTextView = findViewById<TextView>(R.id.day)
+
+        val daysPassed = calculateDaysPassed(date)
+
 
         // 지정된 Dailydiary엑티비티의 텍스트뷰에, Cropdiarypage엑티비티의 item에서 가져온 텍스트를 저장
         cropNameTextView.text = cropName
         nicknameTextView.text = nickname
-        dateTextView.text = date
+        dateTextView.text = "${daysPassed}일차"
 
         // Firebase 인증 및 데이터베이스 참조: cropInfo-uid-nickname 아래 있는 정보들
         databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("sensor")
+
+
+        val databaseReference0 = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("cropInfo")
             .child(uid)
             .child(nickname)
 
-        val databaseReference0 = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").reference
-        lastAddDateRef = databaseReference.child("last_add_date")
-
-        val addedDiaryList = ArrayList<InputDataInfo>()
-        val adapter = DiaryAdapter(this, addedDiaryList)
-        binding.addedDiaryList.adapter = adapter
-
-        // 작물 일지를 작성한 정보를 Firebase Realtime Database에서 가져와서 listview에 추가
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                addedDiaryList.clear() // 리스트 초기화
-                for (snapshot in dataSnapshot.children) {
-                    val day = snapshot.child("day").getValue(String::class.java)
-                    val weight = snapshot.child("weight").getValue(String::class.java)
-                    val temperature = snapshot.child("temperature").getValue(String::class.java)
-                    val humidity = snapshot.child("humidity").getValue(String::class.java)
-                    val illumination = snapshot.child("illumination").getValue(String::class.java)
-
-                    if (day != null && weight != null && temperature != null && humidity != null && illumination != null) {
-                        val inputInfo = InputDataInfo(
-                            day = day,
-                            weight = weight,
-                            temperature = temperature,
-                            humidity = humidity,
-                            illumination = illumination
-                        )
-                        addedDiaryList.add(inputInfo)
-                    } else {
-                        Log.d("Data Check", "Some values are null, skipping this entry.")
-                    }
-                }
-                adapter.notifyDataSetChanged()
+                val temperature = dataSnapshot.child("temperature").getValue(Double::class.java)
+                val humidity = dataSnapshot.child("humidity").getValue(Double::class.java)
+                // 가져온 데이터 UI에 표시
+                binding.realTimeTemperature.text = temperature.toString()
+                binding.realTimeHumidity.text = humidity.toString()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.d("error count","Data upload Error")
+                Log.e("MypageActivity", "Failed to read user info", databaseError.toException())
             }
         })
 
-        // 리스트뷰 아이템 클릭 리스너 설정
-        binding.addedDiaryList.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-            val selectedItem = addedDiaryList[position]
-            val intent = Intent(this, CropdiaryinfopageActivity::class.java)
-            intent.putExtra("day", selectedItem.day) // day 값만 전달
-            intent.putExtra("nickname", nickname)
-            startActivity(intent)
-        }
+        // 작물 일지를 작성한 정보를 Firebase Realtime Database에서 가져와서 listview에 추가
 
         // 마지막 일지 추가 날짜를 확인하여 버튼을 활성화/비활성화
-        lastAddDateRef.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val lastDate = snapshot.getValue(String::class.java)
-                val currentDate = getCurrentDate()
-
-                isButtonEnabled = lastDate != currentDate
-                binding.addDiaryBtn.isEnabled = isButtonEnabled
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // 에러 처리
-                Log.d("Data Error", "Failed to read last add date", error.toException())
-            }
-        })
-
-        binding.addDiaryBtn.setOnClickListener {
-            if (isButtonEnabled) {
-                val addbtnDataRef = databaseReference0.child("motorControl")
-                addbtnDataRef.setValue(1)
-
-                // 현재 날짜를 가져와서 저장
-                val currentDate = getCurrentDate()
-                lastAddDateRef.setValue(currentDate)
-
-                val intent = Intent(this, DiarypageActivity::class.java)
-                intent.putExtra("cropname", cropName)
-                intent.putExtra("nickname", nickname)
-                intent.putExtra("date", date)
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this, "하루에 한 번만 일지를 추가할 수 있습니다.", Toast.LENGTH_SHORT).show()
-            }
-        }
 
         binding.LEDSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -155,10 +96,12 @@ class DailydiaryActivity : AppCompatActivity() {
             }
         }
     }
-
     // 현재 날짜를 "yyyy-MM-dd" 형식으로 반환
-    private fun getCurrentDate(): String {
+    private fun calculateDaysPassed(createdDate: String): Int {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        return dateFormat.format(Date())
+        val date = dateFormat.parse(createdDate)
+        val currentDate = Date()
+        val diff = currentDate.time - date.time
+        return ((diff / (1000 * 60 * 60 * 24))+1).toInt()
     }
 }
