@@ -16,11 +16,6 @@
             android:name=".PuahalramActivity"
             android:exported="false" />
         <activity
-            android:name=".PushAlramActivity"
-            android:exported="false"
-            android:label="@string/title_activity_push_alram"
-            android:theme="@style/Theme.Mycrodiary" />
-        <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -71,6 +66,16 @@
         <activity
             android:name=".Account_Pages.LoginpageActivity"
             android:exported="true" />
+        <service
+            android:name=".MyFirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
 </manifest>
