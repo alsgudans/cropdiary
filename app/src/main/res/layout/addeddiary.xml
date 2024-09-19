@@ -4,7 +4,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:background="@drawable/border"
+    android:layout_margin="7dp"
+    >
 
     <TextView
         android:id="@+id/added_day"

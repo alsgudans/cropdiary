@@ -4,11 +4,9 @@ package com.example.mycrodiary.Cropdiary_Pages
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.Add_Cropdiary_Pages.AddcropdiarypageActivity
 import com.example.mycrodiary.Cropdiary_Utils.Adapter
-
 import com.example.mycrodiary.Database_Utils.Cropinfo
 import com.example.mycrodiary.databinding.ActivityCropdiarypageBinding
 import com.google.firebase.auth.FirebaseAuth
