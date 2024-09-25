@@ -26,12 +26,14 @@
             />
 
         <android.widget.ImageButton
-
             android:id="@+id/add_diary_btn"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@color/button_color1"
+            android:padding="5dp"
+            android:background="@drawable/border_inside_green"
+            android:layout_margin="7dp"
             android:src="@drawable/plusicon1"
+
             />
 
 

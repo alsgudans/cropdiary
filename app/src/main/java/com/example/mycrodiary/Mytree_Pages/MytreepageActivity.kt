@@ -157,8 +157,8 @@ class MytreepageActivity : AppCompatActivity() {
 
                                         val minValue = listOf(water, fertilizer, sun, love).minOrNull() ?: 0
                                         val treeImageRes = when (minValue) {
-                                            in 0..3 -> R.drawable.tree1
-                                            in 4..6 -> R.drawable.tree2
+                                            in 0..3 -> R.drawable.tree11
+                                            in 4..6 -> R.drawable.tree22
                                             in 7..9 -> R.drawable.tree3
                                             in 10..Int.MAX_VALUE -> R.drawable.tree4
                                             else -> R.drawable.tree1 // 기본 이미지
