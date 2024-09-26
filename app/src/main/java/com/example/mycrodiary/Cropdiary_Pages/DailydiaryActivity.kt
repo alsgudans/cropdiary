@@ -21,8 +21,6 @@ class DailydiaryActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityDailydiaryBinding
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var lastAddDateRef: DatabaseReference
-    private var isButtonEnabled = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,6 +93,14 @@ class DailydiaryActivity : AppCompatActivity() {
                 databaseReference0.child("ledControl").setValue(0)
             }
         }
+
+        binding.moveDiary.setOnClickListener(){
+            val intent = Intent(this,CropDiaryManagementPageActivity::class.java)
+            intent.putExtra("cropname",cropName)
+            intent.putExtra("nickname",nickname)
+            startActivity(intent)
+        }
+
     }
     // 현재 날짜를 "yyyy-MM-dd" 형식으로 반환
     private fun calculateDaysPassed(createdDate: String): Int {

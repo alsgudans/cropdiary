@@ -5,16 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.mycrodiary.Cropdiary_Utils.DiaryAdapter
 import com.example.mycrodiary.Database_Utils.InputDataInfo
 import com.example.mycrodiary.R
 import com.example.mycrodiary.databinding.ActivityCropDiaryManagementPageBinding
-import com.example.mycrodiary.databinding.ActivityDailydiaryBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -35,8 +31,6 @@ class CropDiaryManagementPageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-
         binding = ActivityCropDiaryManagementPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -49,26 +43,17 @@ class CropDiaryManagementPageActivity : AppCompatActivity() {
         binding.addedDiaryList.adapter = adapter
 
         // 각 변수에 Cropdiarypage엑티비티의 item에서 putextra한 텍스트를 저장
-        val cropName = intent.getStringExtra("cropname")
         val nickname = intent.getStringExtra("nickname").toString()
-        val date = intent.getStringExtra("date")
+        val cropname = intent.getStringExtra("cropname").toString()
 
-        // 각 변수에 Dailydiary엑티비티의 텍스트뷰를 지정
-        val cropNameTextView = findViewById<TextView>(R.id.crop_name)
-        val nicknameTextView = findViewById<TextView>(R.id.crop_nickname)
-        val dateTextView = findViewById<TextView>(R.id.add_date)
 
-        // 지정된 Dailydiary엑티비티의 텍스트뷰에, Cropdiarypage엑티비티의 item에서 가져온 텍스트를 저장
-        cropNameTextView.text = cropName
-        nicknameTextView.text = nickname
-        dateTextView.text = date
+
 
         databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("cropInfo")
             .child(uid)
             .child("nickname")
 
-        val databaseReference0 = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").reference
         lastAddDateRef = databaseReference.child("last_add_date")
 
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -108,6 +93,25 @@ class CropDiaryManagementPageActivity : AppCompatActivity() {
             intent.putExtra("day", selectedItem.day) // day 값만 전달
             intent.putExtra("nickname", nickname)
             startActivity(intent)
+        }
+
+        binding.addCropDiaryBtn.setOnClickListener(){
+            if (cropname=="토마토"){
+                val intent0 = Intent(this,DiarypageActivity::class.java)
+
+                intent0.putExtra("tomato",cropname)
+                intent0.putExtra("nickname0",nickname)
+                startActivity(intent0)
+            }
+            else{
+                val intent1 = Intent(this,Diarypage1Activity::class.java)
+
+                intent1.putExtra("cucumber",cropname)
+                intent1.putExtra("nickname1",nickname)
+                startActivity(intent1)
+            }
+
+
         }
 
         lastAddDateRef.addListenerForSingleValueEvent(object : ValueEventListener {

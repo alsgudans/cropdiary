@@ -8,12 +8,6 @@
     android:orientation="vertical"
     tools:context=".Setting_Pages.ChangenicknameActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main_color"
-        android:gravity="center"
-        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,8 +18,6 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             />
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="닉네임 변경"
-            android:background="@color/button_color1"/>
+            android:background="@drawable/border_inside_green1"/>
 
 
     </LinearLayout>

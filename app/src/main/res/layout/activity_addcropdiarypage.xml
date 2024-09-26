@@ -8,12 +8,7 @@
     android:orientation="vertical"
     tools:context=".Add_Cropdiary_Pages.AddcropdiarypageActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/main_color"
-        android:gravity="center"
-        >
+
 
         <TextView
             android:id="@+id/addcrop_page"
@@ -26,7 +21,7 @@
             android:textColor="@color/black"
             />
 
-    </com.google.android.material.appbar.AppBarLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
@@ -81,7 +76,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="생성"
-            android:background="@color/button_color1"/>
+            android:background="@drawable/border_inside_green1"/>
 
 
     </LinearLayout>

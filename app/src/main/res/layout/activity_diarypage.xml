@@ -8,25 +8,17 @@
     android:orientation="vertical"
     tools:context=".Cropdiary_Pages.DiarypageActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/diary"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/main_color"
-        android:gravity="center"
-        >
-
-        <TextView
-            android:id="@+id/diary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="18dp"
-            android:text="점검표"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            />
-
-    </com.google.android.material.appbar.AppBarLayout>
+        android:padding="18dp"
+        android:text="점검표"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
 
     <ScrollView
         android:fillViewport="true"
@@ -404,10 +396,11 @@
 
             </LinearLayout>
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/upload_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/border_inside_green1"
                 android:text="작성 완료"
                 android:textSize="25dp"/>
 

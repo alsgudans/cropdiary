@@ -16,13 +16,14 @@ import com.google.firebase.database.*
 
 class DiarypageActivity : AppCompatActivity() {
 
-    private lateinit var databaseReference: DatabaseReference
+    private lateinit var sensordatabaseReference: DatabaseReference
+    private lateinit var nicknamedatabaseReference: DatabaseReference
+    private lateinit var normaldatabaseReference: DatabaseReference
     private lateinit var flowTextView: TextView
     private lateinit var temperatureTextView: TextView
     private lateinit var humidityTextView: TextView
     private lateinit var illuminationTextView: TextView
     private lateinit var auth: FirebaseAuth
-    private lateinit var nickname: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,8 @@ class DiarypageActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         val uid = currentUser?.uid.toString()
 
-        nickname = intent.getStringExtra("nickname").toString()
+        val nickname = intent.getStringExtra("nickname0").toString()
+        val cropname = intent.getStringExtra("tomato").toString()
 
         // 스피너 어댑터 설정
         val selectdayData = resources.getStringArray(R.array.day_array)
@@ -42,8 +44,16 @@ class DiarypageActivity : AppCompatActivity() {
         binding.daySpinner.adapter = spinnerAdapter
 
         // 데이터베이스 참조 설정
-        databaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app").reference
-        val btndatabaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+        normaldatabaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .reference
+
+        sensordatabaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("cropInfo")
+            .child(uid)
+            .child(nickname)
+            .child("sensor")
+
+        nicknamedatabaseReference = FirebaseDatabase.getInstance("https://project-my-crop-default-rtdb.asia-southeast1.firebasedatabase.app")
             .getReference("cropInfo")
             .child(uid)
             .child(nickname)
@@ -55,7 +65,7 @@ class DiarypageActivity : AppCompatActivity() {
         illuminationTextView = binding.illumination
 
         // 센서 값 데이터베이스에서 읽어오기
-        databaseReference.child("sensor").addValueEventListener(object : ValueEventListener {
+        sensordatabaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val sensorData = dataSnapshot.getValue(SensorDataInfo::class.java)
                 sensorData?.let {
@@ -82,9 +92,8 @@ class DiarypageActivity : AppCompatActivity() {
             val illuminationText = illuminationTextView.text.toString()
 
             // 데이터베이스 경로 설정
-            val buttonDataRef = btndatabaseReference.child(selecteddayText)
-            val motorcontrol0 = databaseReference.child("motorControl")
-            val pluspoint = databaseReference.child("userInfo").child(uid).child("point")
+            val buttonDataRef = nicknamedatabaseReference.child(selecteddayText)
+            val pluspoint = normaldatabaseReference.child("userInfo").child(uid).child("point")
 
             // 라디오 버튼 선택 값 가져오기
             val leafStatus = getRadioGroupValue(binding.leafgroup)
@@ -105,7 +114,6 @@ class DiarypageActivity : AppCompatActivity() {
                 illumination = illuminationText
             )
             buttonDataRef.setValue(newData)
-            motorcontrol0.setValue(0)
 
             // 현재 포인트를 가져와서 200포인트 증가
             pluspoint.addListenerForSingleValueEvent(object : ValueEventListener {

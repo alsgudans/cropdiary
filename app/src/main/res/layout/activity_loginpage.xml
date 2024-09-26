@@ -66,7 +66,7 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:background="@color/button_color1"
+            android:background="@drawable/border_inside_green1"
             android:text="Log in"
             />
 
@@ -74,7 +74,7 @@
             android:id="@+id/sign_btn"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:background="@color/button_color1"
+            android:background="@drawable/border_inside_green1"
             android:text="Sign in"
             />
 
@@ -98,7 +98,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@color/button_color2"
+        android:background="@drawable/border_inside_green"
         android:text="serach id/pw"
         android:textColor="@color/black"
         />

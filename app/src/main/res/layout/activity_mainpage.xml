@@ -37,7 +37,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/button_color1"
+                android:background="@drawable/border_inside_green1"
                 android:src="@drawable/nutrition_outline"
                 />nutri
 
@@ -54,7 +54,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/button_color2"
+                android:background="@drawable/border_inside_sun1"
                 android:src="@drawable/person_outline"/>
 
             <TextView
@@ -79,7 +79,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/button_color2"
+                android:background="@drawable/border_inside_green"
                 android:src="@drawable/leaf_outline"/>
 
             <TextView
@@ -96,7 +96,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/button_color1"
+                android:background="@drawable/border"
                 android:src="@drawable/settings_outline"/>
 
             <TextView

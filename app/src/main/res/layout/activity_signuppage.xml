@@ -94,6 +94,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="make account"
-        android:background="@color/button_color1"/>
+        android:background="@drawable/border_inside_green1"/>
 
 </LinearLayout>

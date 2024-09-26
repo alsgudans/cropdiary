@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mycrodiary.R
 import com.example.mycrodiary.Database_Utils.FirebaseRef
 import com.example.mycrodiary.Database_Utils.Cropinfo
+import com.example.mycrodiary.Database_Utils.Sensorinfo
 import com.example.mycrodiary.databinding.ActivityAddcropdiarypageBinding
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
@@ -39,13 +40,20 @@ class AddcropdiarypageActivity : AppCompatActivity() {
             val newCropName = binding.selectCrop.selectedItem.toString()
             val newAddDate = binding.newAddDate.text.toString()
             val newCropNickname = binding.newCropNickname.text.toString()
+            val humidity: Double = 0.0
+            val illumination: Double = 0.0
+            val temperature: Double = 0.0
+            val uv: Double = 0.0
+            val weight: Double = 0.0
 
             val currentUser = auth.currentUser
             val uid = currentUser?.uid
 
             if (uid != null) {
                 val takeCropinfo = Cropinfo(newCropName, newCropNickname, newAddDate) // 닉네임 대신 UID 사용
+                val sensorinfo = Sensorinfo(humidity,illumination,temperature,uv,weight)
                 FirebaseRef.cropInfo.child(uid).child(newCropNickname).setValue(takeCropinfo)
+                FirebaseRef.cropInfo.child(uid).child(newCropNickname).child("sensor").setValue(sensorinfo)
             }
 
             Toast.makeText(this, "작물이 추가되었습니다.", Toast.LENGTH_SHORT).show()
