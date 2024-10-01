@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.AdapterView
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -100,6 +102,25 @@ class DailydiaryActivity : AppCompatActivity() {
             intent.putExtra("nickname",nickname)
             startActivity(intent)
         }
+
+        binding.selectLedOntime.setOnSeekBarChangeListener(object : OnSeekBarChangeListener{
+
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                binding.ledOntime.text = "Progress: $progress"
+                val timeSettingValue = binding.ledOntime.text
+                databaseReference
+            }
+
+            override fun onStrartTrackingTouch(seekbar: SeekBar ?){
+
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // 사용자가 SeekBar 터치를 멈출 때 호출됩니다.
+            }
+        }
+        )
+
+
 
     }
     // 현재 날짜를 "yyyy-MM-dd" 형식으로 반환
